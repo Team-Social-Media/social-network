@@ -14,7 +14,6 @@ export default function Home() {
   const { data: session, status } = useSession();
   console.log(session)
 
-  const user = session?.user;
 
   return (
     <>
@@ -28,6 +27,8 @@ export default function Home() {
       <Header />
       <Grid container spacing={3}>
         <Grid item xs={2}>
+
+        <h1>Home</h1>
           <Sidebar />
         </Grid>
         <Grid item xs={8}>
@@ -51,19 +52,6 @@ export default function Home() {
       </Grid>
       <div className={styles.footer}>
         <Footer />
-
-        {user && (
-          <>
-            <img src={session.user.image} height='50' width='50' />
-            <h2>Welcome, {user.name}</h2>
-            <button onClick={() => signOut()}>Sign Out</button>
-          </>
-        )}
-        {!user && (
-          <>
-            <button onClick={() => signIn()}>Sign In</button>
-          </>
-        )}
 
       </div>
     </>

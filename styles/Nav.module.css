@@ -1,7 +1,7 @@
 .nav {
   height: 80px;
   padding: 10px;
-  background-color: inherit;
+  background-color: 'inherit';
   color: #fff;
   display: flex;
   align-items: center;

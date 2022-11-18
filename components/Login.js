@@ -1,19 +1,33 @@
 import Link from 'next/link'
 import navStyles from '../styles/Nav.module.css'
+import { signIn, signOut, useSession } from 'next-auth/react';
 
 const Login = () => {
+
+    const {data: session, status } = useSession();
+    console.log(session)
+  
+    const user = session?.user;
+
     return (
-      <>
-        <login >
-            <ul>
-                <li>
-                    <Link href='/'>Home</Link>
-                </li>
-                <li>
-                    <Link href='/'>Profile</Link>
-                </li>
-            </ul>
-        </login>
+        <>
+            <login >
+                <div>
+                    {user && (
+                        <>
+                            <img src={session.user.image} height='50' width='50' />
+                            <h2>Welcome, {user.name}</h2>
+                            <button onClick={() => signOut()}>Sign Out</button>
+                        </>
+                    )}
+
+                    {!user && (
+                        <>
+                            <button onClick={() => signIn()}>Sign In</button>
+                        </>
+                    )}
+                </div>
+            </login>
         </>
     )
 }
