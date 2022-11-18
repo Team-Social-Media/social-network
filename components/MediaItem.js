@@ -6,34 +6,46 @@ import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
-import Collapse from '@mui/material/Collapse';
 import Avatar from '@mui/material/Avatar';
+import MenuBookIcon from '@mui/icons-material/MenuBook';
 import IconButton from '@mui/material/IconButton';
+import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
 import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
-import ShareIcon from '@mui/icons-material/Share';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { Button, Rating } from '@mui/material';
+import { Modal, Rating } from '@mui/material';
 
-const ExpandMore = styled((props) => {
-  const { expand, ...other } = props;
-  return <IconButton {...other} />;
-})(({ theme, expand }) => ({
-  transform: !expand ? 'rotate(0deg)' : 'rotate(180deg)',
-  marginLeft: 'auto',
-  transition: theme.transitions.create('transform', {
-    duration: theme.transitions.duration.shortest,
-  }),
-}));
+const style = {
+  position: 'absolute',
+  top: '50%',
+  left: '50%',
+  transform: 'translate(-50%, -50%)',
+  width: 600,
+  bgcolor: 'white',
+  border: '2px solid #000',
+  boxShadow: 24,
+  p: 4,
+};
 
 export default function MediaItem() {
-  const [expanded, setExpanded] = React.useState(false);
+  const [isLiked, setIsLiked] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
 
-  const handleExpandClick = () => {
-    setExpanded(!expanded);
-  };
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  const handleLikeClick = () => {
+    setIsLiked(!isLiked);
+  }
+
+  let button;
+  if (isLiked) {
+    button = <FavoriteIcon sx={{ color: red[500] }}/>;
+  } else {
+    button = <FavoriteBorderOutlinedIcon sx={{ color: red[500] }}/>;
+  }
 
   return (
     <>
@@ -41,13 +53,52 @@ export default function MediaItem() {
         <CardHeader
           avatar={
             <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-              R
+              <MenuBookIcon />
             </Avatar>
           }
           action={
-            <IconButton aria-label="settings">
-              <MoreVertIcon />
-            </IconButton>
+            <>
+              <IconButton aria-label="details" onClick={handleOpen}>
+                <MoreVertIcon />
+              </IconButton>
+              <Modal
+                open={open}
+                onClose={handleClose}
+                aria-labelledby="modal-modal-title"
+                aria-describedby="modal-modal-description"
+              >
+                <Card sx={style} className={mediaStyles.card}>
+                  <CardHeader
+                    avatar={
+                      <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
+                        <MenuBookIcon />
+                      </Avatar>
+                    }
+                    action={
+                      <>
+                        <IconButton aria-label="close" onClick={handleClose}>
+                          <CloseIcon />
+                        </IconButton>
+                      </>
+                    }
+                    title="The Adventures of the Yeti"
+                    subheader="Author: The Yeti"
+                  />
+                  <CardMedia
+                    component="img"
+                    height="194"
+                    image="/static/images/cards/yeti.jpg"
+                    alt="Yeti"
+                  />
+                  <CardContent>
+                    <Rating name="read-only" value={5} readOnly />
+                    <Typography variant="body2" color="text.secondary">
+                      INCLUDE EVEN MORE DETAILS IN THE MODAL! Release dates, sequals, ect..
+                    </Typography>
+                  </CardContent>
+                </Card>
+              </Modal>
+            </>
           }
           title="The Adventures of the Yeti"
           subheader="Author: The Yeti"
@@ -61,105 +112,17 @@ export default function MediaItem() {
         <CardContent>
           <Rating name="read-only" value={5} readOnly />
           <Typography variant="body2" color="text.secondary">
-            I just finished this book last week! I really enjoyed it. However I am unsure about the character development with the Yeti.. any thoughts?
+            MEDIA DESCRIPTION GOES HERE
           </Typography>
         </CardContent>
         <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites">
-            <FavoriteIcon />
-          </IconButton>
-          <IconButton aria-label="share">
-            <ShareIcon />
-          </IconButton>
-          <Button variant="text">Comment</Button>
-          <ExpandMore
-            expand={expanded}
-            onClick={handleExpandClick}
-            aria-expanded={expanded}
-            aria-label="show more"
-          >
-            <ExpandMoreIcon />
-          </ExpandMore>
-        </CardActions>
-        <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <CardContent>
-            <Typography paragraph>Comments:</Typography>
-            <Typography paragraph>
-              This is awesome!
-            </Typography>
-            <Typography paragraph>
-              I loved this book, what did you think of chapter 12?
-            </Typography>
-            <Typography paragraph>
-              This book sucks
-            </Typography>
-            <Typography>
-              The Yeti was my favorite character!
-            </Typography>
-          </CardContent>
-        </Collapse>
-      </Card>
-      <Card sx={{ maxWidth: 345 }} elevation={24} className={mediaStyles.card}>
-        <CardHeader
-          avatar={
-            <Avatar sx={{ bgcolor: red[500] }} aria-label="recipe">
-              R
-            </Avatar>
-          }
-          action={
-            <IconButton aria-label="settings">
-              <MoreVertIcon />
-            </IconButton>
-          }
-          title="The Adventures of the Yeti"
-          subheader="Author: The Yeti"
-        />
-        <CardMedia
-          component="img"
-          height="194"
-          image="/static/images/cards/yeti.jpg"
-          alt="Yeti"
-        />
-        <CardContent>
-          <Rating name="read-only" value={5} readOnly />
           <Typography variant="body2" color="text.secondary">
-            I just finished this book last week! I really enjoyed it. However I am unsure about the character development with the Yeti.. any thoughts?
+            Add to favorites
           </Typography>
-        </CardContent>
-        <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites">
-            <FavoriteIcon />
+          <IconButton aria-label="add to favorites" onClick={handleLikeClick}>
+            {button}
           </IconButton>
-          <IconButton aria-label="share">
-            <ShareIcon />
-          </IconButton>
-          <Button variant="text">Comment</Button>
-          <ExpandMore
-            expand={expanded}
-            onClick={handleExpandClick}
-            aria-expanded={expanded}
-            aria-label="show more"
-          >
-            <ExpandMoreIcon />
-          </ExpandMore>
         </CardActions>
-        <Collapse in={expanded} timeout="auto" unmountOnExit>
-          <CardContent>
-            <Typography paragraph>Comments:</Typography>
-            <Typography paragraph>
-              This is awesome!
-            </Typography>
-            <Typography paragraph>
-              I loved this book, what did you think of chapter 12?
-            </Typography>
-            <Typography paragraph>
-              This book sucks
-            </Typography>
-            <Typography>
-              The Yeti was my favorite character!
-            </Typography>
-          </CardContent>
-        </Collapse>
       </Card>
     </>
   );

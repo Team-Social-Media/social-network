@@ -11,7 +11,7 @@ import { Grid, Pagination } from '@mui/material'
 
 export default function Home() {
 
-  const {data: session, status } = useSession();
+  const { data: session, status } = useSession();
   console.log(session)
 
   const user = session?.user;
@@ -28,11 +28,21 @@ export default function Home() {
       <Header />
       <Grid container spacing={3}>
         <Grid item xs={2}>
-
           <Sidebar />
         </Grid>
         <Grid item xs={8}>
-          <MediaItem />
+          <Grid container spacing={3}>
+            {/* We will need to map through the data and create a grid item containing the mediaitem for each one */}
+            <Grid item xs={4}>
+              <MediaItem />
+            </Grid>
+            <Grid item xs={4}>
+              <MediaItem />
+            </Grid>
+            <Grid item xs={4}>
+              <MediaItem />
+            </Grid>
+          </Grid>
           <Pagination count={10} />
         </Grid>
         <Grid item xs={2}>
@@ -42,18 +52,18 @@ export default function Home() {
       <div className={styles.footer}>
         <Footer />
 
-      {user && (
-        <>
-          <img src={session.user.image} height= '50' width ='50'/>
-          <h2>Welcome, {user.name}</h2>
-          <button onClick={() => signOut()}>Sign Out</button>
-        </>
-      )}
-      {!user &&(
-        <>
-        <button onClick={() => signIn()}>Sign In</button>
-        </>
-      )}
+        {user && (
+          <>
+            <img src={session.user.image} height='50' width='50' />
+            <h2>Welcome, {user.name}</h2>
+            <button onClick={() => signOut()}>Sign Out</button>
+          </>
+        )}
+        {!user && (
+          <>
+            <button onClick={() => signIn()}>Sign In</button>
+          </>
+        )}
 
       </div>
     </>
