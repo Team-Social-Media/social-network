@@ -1,11 +1,11 @@
 import Head from 'next/head'
-import Image from 'next/image'
 import styles from '../styles/Home.module.css'
 import Header from '../components/Header.js'
 import Sidebar from '../components/Sidebar'
 import SidebarRight from '../components/SidebarRight'
-import Item from '../components/Item'
+import MediaItem from '../components/MediaItem'
 import Footer from '../components/Footer'
+import { Grid, Pagination } from '@mui/material'
 
 
 export default function Home() {
@@ -18,19 +18,20 @@ export default function Home() {
       </Head>
 
       <Header />
-
-      <div className={styles.main}>
-
-        <main>
+      <Grid container spacing={3}>
+        <Grid item xs={2}>
           <Sidebar />
-          <Item />
+        </Grid>
+        <Grid item xs={8}>
+          <MediaItem />
+          <Pagination count={10} />
+        </Grid>
+        <Grid item xs={2}>
           <SidebarRight />
-        </main>
-
-        <div className={styles.footer}>
-          <Footer />
-        </div>
-
+        </Grid>
+      </Grid>
+      <div className={styles.footer}>
+        <Footer />
       </div>
     </>
   )
