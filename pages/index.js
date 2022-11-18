@@ -49,17 +49,14 @@ export default function Home() {
           <button onClick={() => signOut()}>Sign Out</button>
         </>
       )}
-      
       {!user &&(
         <>
         <button onClick={() => signIn()}>Sign In</button>
         </>
       )}
-    
 
       </div>
     </>
 
-      
   )
 }
