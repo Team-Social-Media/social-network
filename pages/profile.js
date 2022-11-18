@@ -1,7 +1,7 @@
 import Head from 'next/head'
 import Header from '../components/Header'
 import Sidebar from '../components/Sidebar'
-import Item from '../components/Item'
+
 
 export default function Profile() {
   return (
@@ -13,9 +13,8 @@ export default function Profile() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <main>
-        <h1>Profile Page </h1>
+        <h1>Profile Page</h1>
         <Sidebar />
-          <Item />
       </main>
     </div>
   )
