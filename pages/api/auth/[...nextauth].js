@@ -8,8 +8,7 @@ import SequelizeAdapter from '@next-auth/sequelize-adapter';
 import { Sequelize } from 'sequelize'
 
 const DATABASE_URL = process.env.DATABASE_URL
-const sequelize = new Sequelize(DATABASE_URL)
-
+const sequelize = new Sequelize (DATABASE_URL)
 
 const options = ({
 
@@ -41,12 +40,12 @@ const options = ({
       from: process.env.EMAIL_SERVER_FROM,
     })
   ],
-
+  
   // custom login page (not working)
   // pages: {
   // //   signIn: '/signin',
   // // },
-
+  
   secret: process.env.JWT_SECRET,
   adapter: SequelizeAdapter(sequelize),
 
