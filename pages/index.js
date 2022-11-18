@@ -11,6 +11,8 @@ import { Grid, Pagination } from '@mui/material'
 
 export default function Home() {
 
+  const { data: session, status } = useSession();
+  console.log(session)
 
 
   return (
@@ -25,11 +27,23 @@ export default function Home() {
       <Header />
       <Grid container spacing={3}>
         <Grid item xs={2}>
+
         <h1>Home</h1>
           <Sidebar />
         </Grid>
         <Grid item xs={8}>
-          <MediaItem />
+          <Grid container spacing={3}>
+            {/* We will need to map through the data and create a grid item containing the mediaitem for each one */}
+            <Grid item xs={4}>
+              <MediaItem />
+            </Grid>
+            <Grid item xs={4}>
+              <MediaItem />
+            </Grid>
+            <Grid item xs={4}>
+              <MediaItem />
+            </Grid>
+          </Grid>
           <Pagination count={10} />
         </Grid>
         <Grid item xs={2}>
@@ -39,12 +53,8 @@ export default function Home() {
       <div className={styles.footer}>
         <Footer />
 
-      
-    
-
       </div>
     </>
 
-      
   )
 }
