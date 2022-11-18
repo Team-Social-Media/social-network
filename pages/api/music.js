@@ -15,7 +15,7 @@ let music = async (req, res) => {
 
   try {
 
-    const res = await axios.get(url)
+    await axios.get(url)
       .then(response => {
         console.log('music response.data.results: ', response.data.results)
         const res = {
