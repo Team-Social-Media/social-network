@@ -1,0 +1,15 @@
+.card {
+  border: black 1px;
+}
+
+.image {
+  width: 50px
+}
+
+.title {
+  font-size: large;
+}
+
+.description {
+  font-size: medium;
+}
