@@ -7,7 +7,7 @@ import SidebarRight from '../components/SidebarRight'
 import MediaItem from '../components/MediaItem'
 import Footer from '../components/Footer'
 import { Grid, Pagination } from '@mui/material'
-
+import Testing from './testing'
 
 export default function Home() {
 
@@ -47,7 +47,7 @@ export default function Home() {
           <SidebarRight />
         </Grid>
       </Grid>
-
+    <Testing />
       <div className={styles.footer}>
         <Footer />
       </div>
