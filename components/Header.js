@@ -31,14 +31,12 @@ const Header = () => {
             >
               <MenuIcon />
             </IconButton>
-            <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-              <Typography variant='h3' >Social Media</Typography>
+            <Typography component="div" sx={{ flexGrow: 1 }}>
+              <Typography variant='h3'>Social Media</Typography>
             </Typography>
-            <div>
-              <SearchBar />
-            </div>
-            <Button color="inherit"><Nav /></Button>
-            <div><Login /></div>
+            <SearchBar />
+            <Nav />
+            <Login />
           </Toolbar>
         </AppBar>
       </Box>
