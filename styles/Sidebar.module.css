@@ -1,0 +1,10 @@
+.sidebar {
+  height: 80px;
+  padding: 10px;
+  background-color: 'white';
+  color: #fff;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: inherit;
+}
