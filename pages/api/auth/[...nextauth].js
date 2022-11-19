@@ -4,8 +4,8 @@ import GoogleProvider from 'next-auth/providers/google';
 import EmailProvider from 'next-auth/providers/email';
 import Auth0Provider from 'next-auth/providers/auth0';
 
-import SequelizeAdapter from '@next-auth/sequelize-adapter';
-import { Sequelize } from 'sequelize'
+import SequelizeAdapter, {models} from '@next-auth/sequelize-adapter';
+import Sequelize, {DataTypes} from 'sequelize'
 
 const DATABASE_URL = process.env.DATABASE_URL
 const sequelize = new Sequelize (DATABASE_URL)
@@ -47,12 +47,19 @@ const options = ({
   // // },
   
   secret: process.env.JWT_SECRET,
-  adapter: SequelizeAdapter(sequelize),
+  adapter: SequelizeAdapter(sequelize, {
+    models: {
+      User: sequelize.define('user', {
+        ...models.User,
+        email: DataTypes.STRING,
+      })
+    }
+  }),
 
   database: {
     type: "postgres",
     database: "postgresdb_socialapp",
-    synchronize: true,
+    synchronize: false,
   }
 })
 
