@@ -17,6 +17,9 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Modal, Rating } from '@mui/material';
 
+import Image from 'next/image';
+import vercelPic from '../public/vercel.svg';
+
 const style = {
   position: 'absolute',
   top: '50%',
@@ -84,11 +87,14 @@ export default function MediaItem() {
                     title="The Adventures of the Yeti"
                     subheader="Author: The Yeti"
                   />
-                  <CardMedia
+                  {/* <CardMedia
                     component="img"
                     height="194"
-                    image="/static/images/cards/yeti.jpg"
+                    image="[yeti_image]"
                     alt="Yeti"
+                  /> */}
+                  <Image src={vercelPic}
+                  alt='vercelTest'
                   />
                   <CardContent>
                     <Rating name="read-only" value={5} readOnly />
@@ -103,11 +109,14 @@ export default function MediaItem() {
           title="The Adventures of the Yeti"
           subheader="Author: The Yeti"
         />
-        <CardMedia
+        {/* <CardMedia
           component="img"
           height="194"
-          image="/static/images/cards/yeti.jpg"
+          image={yeti_image}
           alt="Yeti"
+        /> */}
+        <Image src={vercelPic}
+        alt='vercel test'
         />
         <CardContent>
           <Rating name="read-only" value={5} readOnly />
