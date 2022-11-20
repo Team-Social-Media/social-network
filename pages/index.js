@@ -7,6 +7,7 @@ import SidebarRight from '../components/SidebarRight'
 import MediaItem from '../components/MediaItem'
 import Footer from '../components/Footer'
 import { Grid, Pagination } from '@mui/material'
+
 import { useEffect, useState } from 'react';
 
 
@@ -38,7 +39,6 @@ export default function Home() {
         </Grid>
         <Grid item xs={8}>
           <Grid container spacing={3}>
-            {/* We will need to map through the data and create a grid item containing the mediaitem for each one */}
             {data.map(_ => (
               <Grid key={_.id} item xs={4}>
                 <MediaItem />
