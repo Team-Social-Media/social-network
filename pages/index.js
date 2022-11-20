@@ -7,9 +7,8 @@ import SidebarRight from '../components/SidebarRight'
 import MediaItem from '../components/MediaItem'
 import Footer from '../components/Footer'
 import { Grid, Pagination } from '@mui/material'
-
 import { useEffect, useState } from 'react';
-
+import Testing from './testing'
 
 export default function Home() {
   // const { data: session, status } = useSession();
@@ -33,8 +32,6 @@ export default function Home() {
       <Header />
       <Grid container spacing={3}>
         <Grid item xs={2}>
-
-        <h1>Home</h1>
           <Sidebar />
         </Grid>
         <Grid item xs={8}>
@@ -51,9 +48,9 @@ export default function Home() {
           <SidebarRight />
         </Grid>
       </Grid>
+    <Testing />
       <div className={styles.footer}>
         <Footer />
-
       </div>
     </>
 

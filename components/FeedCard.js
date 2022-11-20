@@ -17,6 +17,9 @@ import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Button, Rating } from '@mui/material';
 
+import Image from 'next/image';
+import vercelPic from '../public/vercel.svg';
+
 const ExpandMore = styled((props) => {
   const { expand, ...other } = props;
   return <IconButton {...other} />;
@@ -34,7 +37,7 @@ export default function MediaItem() {
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
-
+  
   return (
     <>
       <Card sx={{ maxWidth: 345 }} elevation={24} className={mediaStyles.card}>
@@ -52,11 +55,14 @@ export default function MediaItem() {
           title="The Adventures of the Yeti"
           subheader="Author: The Yeti"
         />
-        <CardMedia
+        {/* <CardMedia
           component="img"
           height="194"
-          image="/static/images/cards/yeti.jpg"
+          image="{yeti_image}"
           alt="Yeti"
+        /> */}
+        <Image src={vercelPic}
+        alt='vercel test'
         />
         <CardContent>
           <Rating name="read-only" value={5} readOnly />
@@ -114,11 +120,14 @@ export default function MediaItem() {
           title="The Adventures of the Yeti"
           subheader="Author: The Yeti"
         />
-        <CardMedia
+        {/* <CardMedia
           component="img"
           height="194"
           image="/static/images/cards/yeti.jpg"
           alt="Yeti"
+        /> */}
+        <Image src={vercelPic}
+        alt = "vercel test"
         />
         <CardContent>
           <Rating name="read-only" value={5} readOnly />
