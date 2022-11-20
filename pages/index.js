@@ -7,13 +7,19 @@ import SidebarRight from '../components/SidebarRight'
 import MediaItem from '../components/MediaItem'
 import Footer from '../components/Footer'
 import { Grid, Pagination } from '@mui/material'
+import { useEffect, useState } from 'react';
 import Testing from './testing'
 
 export default function Home() {
-
-  const { data: session, status } = useSession();
-  console.log(session)
-
+  // const { data: session, status } = useSession();
+  const [data, setData] = useState([]);
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/todos')
+      .then((res) => res.json())
+      .then((data) => {
+        setData(data);
+      });
+  }, []);
 
   return (
     <>
@@ -30,16 +36,11 @@ export default function Home() {
         </Grid>
         <Grid item xs={8}>
           <Grid container spacing={3}>
-            {/* We will need to map through the data and create a grid item containing the mediaitem for each one */}
-            <Grid item xs={4}>
-              <MediaItem />
-            </Grid>
-            <Grid item xs={4}>
-              <MediaItem />
-            </Grid>
-            <Grid item xs={4}>
-              <MediaItem />
-            </Grid>
+            {data.map(_ => (
+              <Grid key={_.id} item xs={4}>
+                <MediaItem />
+              </Grid>
+            ))}
           </Grid>
           <Pagination count={10} />
         </Grid>
