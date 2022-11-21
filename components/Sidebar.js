@@ -21,8 +21,7 @@ function Sidebar({ setData }) {
 
   return (
     <>
-      <Container sx={{ height: '100%', width: '100%', backgroundColor: 'gray' }}>
-        <div>
+      <Container sx={{ height: '44vmax', width: 'auto', backgroundColor: 'gray', position: 'static'}}>
           <h1>Browse Media</h1>
           <Box sx={{ textAlign: 'center' }}>
             <Typography variant='h5'>
@@ -73,7 +72,6 @@ function Sidebar({ setData }) {
               </IconButton>
             </Paper> : null}
           </Box>
-        </div>
       </Container>
 
     </>

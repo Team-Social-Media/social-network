@@ -6,27 +6,19 @@ const movies = async (req, res) => {
   let MOVIE_API = process.env.NEXT_PUBLIC_MOVIE_API;
   let MOVIE_Key = process.env.NEXT_PUBLIC_MOVIE_Key;
 
+  console.log('movies.js req.query.title: ', req.query.title)
+
   let query = req.query.title;
 
   if (!query) {
     return res.status(400).send({ message: 'Missing movie title in query string' });
   }
 
-  const queryFormatter = (string) => {
-    if (string.includes(' ')) {
-      let newArray = string.split(' ');
-      return newArray.join('%20');
-    }
-  }
-
-  let fQuery = queryFormatter(query) || query;
-
-  let url = `${MOVIE_API}SearchAll/${MOVIE_Key}/${fQuery}`;
-  console.log(url)
+  let url = `${MOVIE_API}SearchAll/${MOVIE_Key}/${query}`;
   try {
+    console.log('movies.js url: ', url)
     await axios.get(url)
       .then(response => {
-        console.log(response.data.results)
         const data = response.data.results.slice(0, 10).map(result => ({
           medium: 'movie',
           title: result.title,
@@ -35,6 +27,7 @@ const movies = async (req, res) => {
           description: result.description,
         }));
         res.status(200).send(data);
+        console.log('movies.js data: ', data)
       })
   } catch (error) {
     console.error('Error in movies.js: ', error)
