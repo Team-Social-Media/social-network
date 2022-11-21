@@ -35,7 +35,7 @@ const style = {
   p: 4,
 };
 
-export default function MediaItem({ item }) {
+export default function MediaItem(props{ item }) {
   const [isLiked, setIsLiked] = React.useState(false);
   const [open, setOpen] = React.useState(false);
 
