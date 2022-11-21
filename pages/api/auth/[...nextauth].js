@@ -1,14 +1,16 @@
 import NextAuth from "next-auth/next";
 import GithubProvider from 'next-auth/providers/github';
 import GoogleProvider from 'next-auth/providers/google';
-import EmailProvider from 'next-auth/providers/email';
-import Auth0Provider from 'next-auth/providers/auth0';
 
+import CredentialsProvider  from "next-auth/providers/credentials";
+import EmailProvider from 'next-auth/providers/email';
+
+//Needed for EmailProvider if we use it
 import SequelizeAdapter, {models} from '@next-auth/sequelize-adapter';
 import Sequelize, {DataTypes} from 'sequelize'
+import fs from 'fs';
 
-const DATABASE_URL = process.env.DATABASE_URL
-const sequelize = new Sequelize (DATABASE_URL)
+// const sequelize = new Sequelize (process.env.DATABASE_URL)
 
 const options = ({
 
@@ -23,44 +25,61 @@ const options = ({
       clientSecret: process.env.GITHUB_SECRET
     }),
 
-    Auth0Provider({
-      clientId: process.env.AUTH0_CLIENT_ID,
-      clientSecret: process.env.AUTH0_CLIENT_SECRET,
-      domain: process.env.AUTH0_CLIENT_DOMAIN,
-    }),
-    EmailProvider({
-      server: {
-        host: process.env.EMAIL_SERVER_HOST,
-        port: process.env.EMAIL_SERVER_PORT,
-        auth: {
-          user: process.env.EMAIL_SERVER_USER,
-          pass: process.env.EMAIL_SERVER_PASSWORD,
-        }
-      },
-      from: process.env.EMAIL_SERVER_FROM,
-    })
+    // CredentialsProvider({
+
+    // }),
+
+    // EmailProvider({
+    //   server: {
+    //     host: process.env.EMAIL_SERVER_HOST,
+    //     port: process.env.EMAIL_SERVER_PORT,
+    //     auth: {
+    //       user: process.env.EMAIL_SERVER_USER,
+    //       pass: process.env.EMAIL_SERVER_PASSWORD,
+    //     }
+    //   },
+    //   from: process.env.EMAIL_SERVER_FROM,
+    // })
+
   ],
-  
-  // custom login page (not working)
+
+  secret: process.env.JWT_SECRET,
+
+  // EmailProvider Requires Adapter
+  // adapter: SequelizeAdapter(sequelize),
+
   // pages: {
   // //   signIn: '/signin',
   // // },
+
+  // callbacks: {
+
+  // },
   
-  secret: process.env.JWT_SECRET,
-  adapter: SequelizeAdapter(sequelize, {
-    models: {
-      User: sequelize.define('user', {
-        ...models.User,
-        email: DataTypes.STRING,
-      })
-    }
-  }),
+  // events: {
+  //   signIn: ({user, account, profile, isNewUser}) => {
+  //     console.log(`isNewUser: ${JSON.stringify(isNewUser)}`);
+  //   },
+  // },
 
   database: {
     type: "postgres",
-    database: "postgresdb_socialapp",
-    synchronize: false,
-  }
-})
+    host: process.env.DATABASE_HOST,
+    port: process.env.DATABASE_PORT,
+    username: process.env.DATABASE_USER,
+    password: process.env.DATABASE_PASSWORD,
+    database: process.env.DATABASE_NAME,
+    synchronize: true,
+
+    // EmailProvider requires SSL 
+    // ssl: {
+      
+    //   rejectUnauthorized: false,
+    //   ca: fs.readFileSync('./ca-certificate.crt').toString()
+    // }
+  },
+
+  debug: true,
+});
 
 export default (req, res) => NextAuth(req, res, options);

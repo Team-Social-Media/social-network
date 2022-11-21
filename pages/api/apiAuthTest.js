@@ -1,6 +1,6 @@
 import {getSession} from 'next-auth/react';
 
-// Next.js API route support: https://nextjs.org/docs/api-routes/introduction
+// prevents API calls if no user session is detected
 
 export default async function handler(req, res) {
 
