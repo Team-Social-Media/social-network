@@ -25,32 +25,48 @@ const options = ({
       clientSecret: process.env.GITHUB_SECRET
     }),
 
+    {
+      id: 'socialAppProvider',
+      name: 'socialApp',
+      type: 'oauth',
+      version: '2.0',
+      scope: 'email',
+      params: {grant_type: "authorization_code"},
+      accessTokenUrl: '',
+      authorizationUrl: '',
+      requestTokenUrl: '',
+      profileUrl: '',
+      clientId: '',
+      clientSecret: '',
+      profile: '',
+      protection: "state",
+      credentials: {
+        username: {label: 'Email', type: 'text', placeholder: 'jon@doe.com'},
+        password: {label: 'Password', type: 'password'},
+      }
+
+    },
+
     // CredentialsProvider({
-
-    // }),
-
-    // EmailProvider({
-    //   server: {
-    //     host: process.env.EMAIL_SERVER_HOST,
-    //     port: process.env.EMAIL_SERVER_PORT,
-    //     auth: {
-    //       user: process.env.EMAIL_SERVER_USER,
-    //       pass: process.env.EMAIL_SERVER_PASSWORD,
-    //     }
+    //   name: 'Social-App',
+    //   credentials: {
+    //     username: {label: 'Email', type: 'text', placeholder: 'john@doe.com'},
+    //     password: {label: 'Password', type: 'password'},
+    //     phoneNumber: {label: 'Phone Number', type:'phoneNumber'}
     //   },
-    //   from: process.env.EMAIL_SERVER_FROM,
-    // })
+    //   async authorize(credentials){
+    //     const url = ''
+
+    //   }
+    // }),
 
   ],
 
   secret: process.env.JWT_SECRET,
 
-  // EmailProvider Requires Adapter
-  // adapter: SequelizeAdapter(sequelize),
-
   // pages: {
-  // //   signIn: '/signin',
-  // // },
+  //   signIn: '/signin',
+  // },
 
   // callbacks: {
 
@@ -71,7 +87,7 @@ const options = ({
     database: process.env.DATABASE_NAME,
     synchronize: true,
 
-    // EmailProvider requires SSL 
+    // EmailProvider also requires SSL 
     // ssl: {
       
     //   rejectUnauthorized: false,
