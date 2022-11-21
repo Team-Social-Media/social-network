@@ -2,6 +2,10 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { useSession, signOut, getSession } from "next-auth/react";
 
+
+// Protected route that requires user session data
+// could be used to set role requirements for certain pages
+
 const Secret = () => {
 
   const {data: session, status} = useSession();

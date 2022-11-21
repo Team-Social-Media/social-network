@@ -13,12 +13,12 @@ export default async function handler(req, res) {
       let newArray = string.split(' ');
       return newArray.join('+');
     }
-  }  
+  }
 
-  let fQuery = queryFormatter(query) || query;  
+  let fQuery = queryFormatter(query) || query;
   let url = `${BOOKS_API}${fQuery}`;
-  
-  try {  
+
+  try {
     await axios.get(url)
       .then(response1 => {
         // console.log('books response.data.docs[0]: ', response1.data.docs[0])

@@ -24,6 +24,7 @@ const Login = () => {
                     {!user && (
                         <>
                             <button onClick={() => signIn()}>Sign In</button>
+                            {console.log(session)}
                         </>
                     )}
                 </div>
