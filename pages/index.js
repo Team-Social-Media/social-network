@@ -19,13 +19,6 @@ import Testing from './testing'
 export default function Home() {
   // const { data: session, status } = useSession();
   const [data, setData] = useState([]);
-  useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/todos')
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data);
-      });
-  }, []);
 
   return (
     <>
@@ -38,13 +31,13 @@ export default function Home() {
       <Header />
       <Grid container spacing={3}>
         <Grid item xs={2}>
-          <Sidebar />
+          <Sidebar setData={setData} />
         </Grid>
         <Grid item xs={8}>
           <Grid container spacing={3}>
-            {data.map(_ => (
-              <Grid key={_.id} item xs={4}>
-                <MediaItem />
+            {data.map(item => (
+              <Grid key={item.id} item xs={4}>
+                <MediaItem item={item}/>
               </Grid>
             ))}
           </Grid>
