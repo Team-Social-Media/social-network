@@ -62,4 +62,3 @@ NEXT_PUBLIC_BOOKS_API=<http://openlibrary.org/search.json?q=>
 [Figma Whiteboard](https://www.figma.com/file/kWyXOwDU82DmGUER6qTyOl/Social-App?node-id=4%3A1521&t=cgeAqUb9rvjb8j99-1)
 
 #### References
-
