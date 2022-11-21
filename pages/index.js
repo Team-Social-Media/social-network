@@ -1,6 +1,12 @@
-import Head from 'next/head'
+import Head from 'next/head';
 import styles from '../styles/Home.module.css'
+
+// needed for auth
+import React from 'react';
+import Link from 'next/link';
 import { signIn, signOut, useSession } from 'next-auth/react';
+
+// needed for structure and css
 import Header from '../components/Header.js'
 import Sidebar from '../components/Sidebar'
 import SidebarRight from '../components/SidebarRight'
