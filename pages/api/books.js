@@ -1,13 +1,16 @@
-
-
-const books = async () => {
+const books = async (req, res) => {
 
   const axios = require('axios');
   const env = require('env');
 
   let BOOKS_API = process.env.NEXT_PUBLIC_BOOKS_API;
   let BOOKS_Covers = process.env.NEXT_PUBLIC_BOOKS_Covers
-  let query = 'wastelands stephen king';
+
+  let query = req.query.title;
+
+  if (!query) {
+    return res.status(400).send({ message: 'Missing book title in query string' });
+  }
 
   const queryFormatter = (string) => {
     if (string.includes(' ')) {
@@ -19,22 +22,19 @@ const books = async () => {
   let fQuery = queryFormatter(query) || query;
 
   let url = `${BOOKS_API}${fQuery}`;
-  let res;
-
+  console.log(url);
   try {
-
     await axios.get(url)
-      .then(response1 => {
-        // console.log('books response.data.docs[0]: ', response1.data.docs[0])
-
-        res = {
-          title: response1.data.docs[0].title,
-          author: response1.data.docs[0].author_name[0],
-          image: `${BOOKS_Covers}id/${response1.data.docs[0].cover_i}-M.jpg`,
-          year: response1.data.docs[0].first_publish_year,
-        }
-      })
-    console.log('books res: ', res)
+      .then(response => {
+        const data = response.data.docs.slice(0, 10).map(result => ({
+          medium: 'book',
+          title: result.title,
+          author: result.author_name[0],
+          image: `${BOOKS_Covers}id/${result.cover_i}-M.jpg`,
+          year: result.first_publish_year,
+        }));
+        res.status(200).send(data);
+      });
   } catch (error) {
     console.error('Error in books.js: ', error)
   }

@@ -9,7 +9,11 @@ let music = async (req, res) => {
   let MUSIC_Key = process.env.NEXT_PUBLIC_MUSIC_Key
   let MUSIC_Secret = process.env.NEXT_PUBLIC_MUSIC_Secret
 
-  let query = 'Nirvana lithium'
+  let query = req.query.search;
+
+  if (!query) {
+    return res.status(400).send({ message: 'Missing search string in query' });
+  }
 
   let url = `${MUSIC_API}q=${query}&key=${MUSIC_Key}&secret=${MUSIC_Secret}`
 
@@ -18,13 +22,14 @@ let music = async (req, res) => {
     await axios.get(url)
       .then(response => {
         console.log('music response.data.results: ', response.data.results)
-        const res = {
-          title: response.data.results[0].title,
-          image: response.data.results[0].cover_image,
-          artist: response.data.results[2].title,
-          year: response.data.results[0].year,
-        }
-        console.log('music res: ', res)
+        const data = response.data.results.slice(0, 10).map(result => ({
+          medium: 'music',
+          title: result.title,
+          image: result.cover_image,
+          artist: result.title,
+          year: result.year,
+        }));
+        res.status(200).send(data);
       })
   } catch (error) {
     console.error('Error in music.js: ', JSON.stringify(error.message))
