@@ -3,14 +3,6 @@ import GithubProvider from 'next-auth/providers/github';
 import GoogleProvider from 'next-auth/providers/google';
 
 import CredentialsProvider  from "next-auth/providers/credentials";
-import EmailProvider from 'next-auth/providers/email';
-
-//Needed for EmailProvider if we use it
-import SequelizeAdapter, {models} from '@next-auth/sequelize-adapter';
-import Sequelize, {DataTypes} from 'sequelize'
-import fs from 'fs';
-
-// const sequelize = new Sequelize (process.env.DATABASE_URL)
 
 const options = ({
 
@@ -25,44 +17,35 @@ const options = ({
       clientSecret: process.env.GITHUB_SECRET
     }),
 
-    {
-      id: 'socialAppProvider',
-      name: 'socialApp',
-      type: 'oauth',
-      version: '2.0',
-      scope: 'email',
-      params: {grant_type: "authorization_code"},
-      accessTokenUrl: '',
-      authorizationUrl: '',
-      requestTokenUrl: '',
-      profileUrl: '',
-      clientId: '',
-      clientSecret: '',
-      profile: '',
-      protection: "state",
-      credentials: {
-        username: {label: 'Email', type: 'text', placeholder: 'jon@doe.com'},
-        password: {label: 'Password', type: 'password'},
-      }
+    // custom provider: stretch goal?
 
-    },
-
-    // CredentialsProvider({
-    //   name: 'Social-App',
+    // {
+    //   id: 'socialAppProvider',
+    //   name: 'socialApp',
+    //   type: 'oauth',
+    //   version: '2.0',
+    //   scope: 'email',
+    //   params: {grant_type: "authorization_code"},
+    //   accessTokenUrl: '',
+    //   authorizationUrl: '',
+    //   requestTokenUrl: '',
+    //   profileUrl: '',
+    //   clientId: '',
+    //   clientSecret: '',
+    //   profile: '',
+    //   protection: "state",
     //   credentials: {
-    //     username: {label: 'Email', type: 'text', placeholder: 'john@doe.com'},
+    //     username: {label: 'Email', type: 'text', placeholder: 'jon@doe.com'},
     //     password: {label: 'Password', type: 'password'},
-    //     phoneNumber: {label: 'Phone Number', type:'phoneNumber'}
-    //   },
-    //   async authorize(credentials){
-    //     const url = ''
-
     //   }
-    // }),
+
+    // },
 
   ],
 
   secret: process.env.JWT_SECRET,
+
+  // potential additional options for directing to pages or using callbacks
 
   // pages: {
   //   signIn: '/signin',
@@ -86,13 +69,6 @@ const options = ({
     password: process.env.DATABASE_PASSWORD,
     database: process.env.DATABASE_NAME,
     synchronize: true,
-
-    // EmailProvider also requires SSL 
-    // ssl: {
-      
-    //   rejectUnauthorized: false,
-    //   ca: fs.readFileSync('./ca-certificate.crt').toString()
-    // }
   },
 
   debug: true,
