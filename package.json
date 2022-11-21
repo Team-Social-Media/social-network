@@ -31,8 +31,8 @@
     "react-dom": "18.2.0",
     "react-icons": "^4.6.0",
     "sequelize": "^6.25.6",
-    "sqlite3": "^5.1.2"
-    "react-if": "^4.1.4",
+    "sqlite3": "^5.1.2",
+    "react-if": "^4.1.4"
 
   }
 }
