@@ -1,7 +1,8 @@
 const books = async (req, res) => {
 
   const axios = require('axios');
-  const env = require('env');
+  const env = require('dotenv').config();
+
 
   let BOOKS_API = process.env.NEXT_PUBLIC_BOOKS_API;
   let BOOKS_Covers = process.env.NEXT_PUBLIC_BOOKS_Covers

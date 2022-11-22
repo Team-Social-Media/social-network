@@ -1,7 +1,7 @@
 const movies = async (req, res) => {
 
   const axios = require('axios');
-  const env = require('env');
+  const env = require('dotenv').config();
 
   let MOVIE_API = process.env.NEXT_PUBLIC_MOVIE_API;
   let MOVIE_Key = process.env.NEXT_PUBLIC_MOVIE_Key;

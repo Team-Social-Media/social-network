@@ -3,7 +3,7 @@
 let music = async (req, res) => {
 
   const axios = require('axios');
-  const env = require('env');
+  const env = require('dotenv').config();
 
   let MUSIC_API = process.env.NEXT_PUBLIC_MUSIC_API
   let MUSIC_Key = process.env.NEXT_PUBLIC_MUSIC_Key
