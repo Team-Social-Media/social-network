@@ -1,8 +1,23 @@
 import Link from 'next/link'
 import loginStyles from '../styles/Nav.module.css'
 import { signIn, signOut, useSession } from 'next-auth/react';
+import React, { useState } from 'react';
+import { IconButton } from '@mui/material';
+import { Menu, MenuItem } from '@mui/material';
 
 const Login = () => {
+    const [anchorEl, setAnchorEl] = useState(null);
+    const [open, setOpen] = useState(false);
+    const handleClose = () => {
+        setAnchorEl(null);
+        setOpen(false);
+    }
+    
+    const handleClick = (e)=> {
+        setAnchorEl(e.currentTarget);
+        setOpen(true);
+    }
+
 
     const { data: session, status } = useSession();
     console.log(session)
@@ -12,13 +27,29 @@ const Login = () => {
     return (
         <>
             <login >
-                <div sx={{display: 'flex'}}>
+
+                <div sx={{ align: 'center', flexFlow: 'column wrap' }}>
                     {user && (
-                        <div sx={{display: 'flex'}}>
-                            <img alt='avatar' src={session.user.image} height='50' width='50' />
-                            {/* <h2>Welcome, {user.name}</h2> */}
-                            <button onClick={() => signOut()}>Sign Out</button>
-                        </div>
+                        <>
+                            <IconButton
+                            onClick={handleClick}
+                                size="small"
+                                edge="start"
+                                color="inherit"
+                                display='box'
+                                aria-label="menu"
+                                sx={{ mr: 2 }}    
+                            >
+                                <img alt='avatar' src={session.user.image} height='50' width='50' overflow='hidden' />
+                                </IconButton>
+
+                            <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
+                                <MenuItem onClick={handleClose}>
+                                <button onClick={() => signOut()} sx={{ align: 'center' }}>Sign Out</button>
+                                </MenuItem>
+                            </Menu>
+                            
+                        </>
                     )}
 
                     {!user && (
