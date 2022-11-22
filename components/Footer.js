@@ -1,19 +1,9 @@
 import styles from '../styles/Footer.module.css'
-import { useState } from 'react';
 import Image from 'next/image';
 
 const Footer = () => {
 
-  let adHeight;
-  let adWidth;
-
-  if (typeof window !== 'undefined') {
-    adWidth = Math.ceil(window.screen.availWidth / 10) || 300;
-    adHeight = Math.ceil(window.screen.availHeight / 50) || 200;
-  }
-
-  let image = () => `https://picsum.photos/450/150?random=1.jpg`;
-  console.log('footer image: ', image)
+  let image = `https://picsum.photos/450/150?random`;
 
   return (
     <>
