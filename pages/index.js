@@ -43,6 +43,26 @@ export default function Home() {
   const startingData = (page - 1) * pageSize;
   const endingData = startingData + pageSize;
 
+  const { data: session, status } = useSession();
+    console.log('profile.js session: ', session)
+
+  const user = {
+    email: session.user.email,
+    name: session.user.name,
+    favorites: [],
+  }
+
+  const handleFavorites = (favItem) => {
+    if(user.favorites.includes(favItem)) {
+      let i = user.favorites.indexOf(favItem);
+      user.favorites.splice(i, 1);
+    } else {
+      user.favorites.push(favItem);
+    }
+    console.log('user: ', user)
+    console.log('user favorites: ', user.favorites)
+  }
+
   return (
     <>
       <Head>
@@ -60,7 +80,7 @@ export default function Home() {
           <Sidebar setData={setData} />
         </Grid>
         <Grid item xs={8}>
-          <Grid container spacing={3} sx={{margin: 'auto'}}>
+          <Grid container spacing={3} sx={{margin: 'auto', padding: 'auto'}}>
             {data.slice(startingData, endingData).map(item => (
               <Grid key={item.id} item xs={4}>
                 <MediaItem item={item} 

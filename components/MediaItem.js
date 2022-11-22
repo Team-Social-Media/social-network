@@ -108,7 +108,7 @@ export default function MediaItem(props) {
 
   return (
     <>
-      <Card sx={{ maxWidth: 345, justifyContent: "center" }} elevation={24} className={mediaStyles.card}>
+      <Card sx={{ maxWidth: 335, justifyContent: "center" }} elevation={24} className={mediaStyles.card}>
         <CardHeader
           avatar={icon(item)}
           action={
@@ -150,12 +150,12 @@ export default function MediaItem(props) {
           {itemImage()}
         </CardMedia>
         <CardActions disableSpacing>
-          <Typography variant="body2" color="text.secondary">
-            Add to favorites
-          </Typography>
           <IconButton aria-label="add to favorites" onClick={handleLikeClick}>
             {button}
           </IconButton>
+          <Typography variant="body2" color="text.secondary">
+            Add to favorites
+          </Typography>
         </CardActions>
       </Card>
     </>

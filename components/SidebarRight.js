@@ -10,7 +10,7 @@ function SidebarRight() {
   return (
     <>
 
-      <Container sx={{ height: '88vh', top: '10vh', margin: 'auto', width: 'auto', backgroundColor: '#668F80', position: 'fixed', boxShadow: '5px 5px 5px grey', flex: 'grow', borderRadius: '15px 5px 15px 15px' }}>
+      <Container sx={{ height: '88vh', top: '10vh', margin: 'auto', width: 'auto', backgroundColor: '#668F80', position: 'fixed', boxShadow: '5px 5px 5px grey', flex: 'grow', borderRadius: '15px 5px 15px 15px', flex: 'grow' }}>
         <div>
           <h1>Right Sidebar</h1>
           <article>
