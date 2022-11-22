@@ -21,7 +21,7 @@ function Sidebar({ setData }) {
 
   return (
     <>
-      <Container sx={{ height: '80vh', top: '10vh', width: 'auto', backgroundColor: '#668F80', position: 'fixed', boxShadow: '5px 5px 5px grey'}}>
+      <Container sx={{ height: '88vh', top: '10vh', width: 'auto', backgroundColor: '#668F80', position: 'fixed', boxShadow: '5px 5px 5px grey', borderRadius: '5px 15px 15px 5px'}}>
           <h1>Browse Media</h1>
           <Box sx={{ textAlign: 'center' }}>
             <Typography variant='h5'>

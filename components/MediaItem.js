@@ -69,7 +69,7 @@ export default function MediaItem(props) {
     }
   }
 
-  const itemImage = (item) => {
+  const itemImage = () => {
     if (!item.image || /undefined/gi.test(item.image)) {
       if (item.medium === 'book') {
         return <Image src='/book.png'
@@ -136,7 +136,7 @@ export default function MediaItem(props) {
                     subheader={item.author}
                   />
                   <CardMedia sx={{ display: 'flex', justifyContent: 'center' }}>
-                    {itemImage(item)}
+                    {itemImage()}
                   </CardMedia>
                 </Card>
               </Modal>
@@ -147,7 +147,7 @@ export default function MediaItem(props) {
           sx={{ height: 92 }}
         />
         <CardMedia sx={{ display: 'flex', justifyContent: 'center' }}>
-          {itemImage(item)}
+          {itemImage()}
         </CardMedia>
         <CardActions disableSpacing>
           <Typography variant="body2" color="text.secondary">

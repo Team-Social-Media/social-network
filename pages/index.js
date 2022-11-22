@@ -12,7 +12,7 @@ import Sidebar from '../components/Sidebar'
 import SidebarRight from '../components/SidebarRight'
 import MediaItem from '../components/MediaItem'
 import Footer from '../components/Footer'
-import { Grid, Pagination } from '@mui/material'
+import { Grid, Pagination, Container } from '@mui/material'
 import { useEffect, useState } from 'react';
 // import Testing from './testing'
 
@@ -43,26 +43,6 @@ export default function Home() {
   const startingData = (page - 1) * pageSize;
   const endingData = startingData + pageSize;
 
-  const { data: session, status } = useSession();
-    console.log('profile.js session: ', session)
-
-  const user = {
-    email: session.user.email,
-    name: session.user.name,
-    favorites: [],
-  }
-
-  const handleFavorites = (favItem) => {
-    if(user.favorites.includes(favItem)) {
-      let i = user.favorites.indexOf(favItem);
-      user.favorites.splice(i, 1);
-    } else {
-      user.favorites.push(favItem);
-    }
-    console.log('user: ', user)
-    console.log('user favorites: ', user.favorites)
-  }
-
   return (
     <>
       <Head>
@@ -73,11 +53,14 @@ export default function Home() {
 
       <Header />
       <Grid className={styles['main-grid']} container spacing={3}>
+      <Grid item xs={12}>
+          <Container sx={{height: '5vh'}}></Container>
+        </Grid>
         <Grid item xs={2}>
           <Sidebar setData={setData} />
         </Grid>
         <Grid item xs={8}>
-          <Grid container spacing={3}>
+          <Grid container spacing={3} sx={{margin: 'auto'}}>
             {data.slice(startingData, endingData).map(item => (
               <Grid key={item.id} item xs={4}>
                 <MediaItem item={item} 

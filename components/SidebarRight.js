@@ -10,16 +10,19 @@ function SidebarRight() {
   return (
     <>
 
-      <Container sx={{ height: '80vh', top: '10vh', width: 'auto', backgroundColor: '#668F80', position: 'fixed', boxShadow: '5px 5px 5px grey'}}>
-      <div>
-        <h1>Right Sidebar</h1>
-        <article>
-          <h2>Whats New in the Media</h2>
-        </article>
-        <article>
-          <h2>Suggested Friends</h2>
-        </article>
-      </div>
+      <Container sx={{ height: '88vh', top: '10vh', margin: 'auto', width: 'auto', backgroundColor: '#668F80', position: 'fixed', boxShadow: '5px 5px 5px grey', flex: 'grow', borderRadius: '15px 5px 15px 15px' }}>
+        <div>
+          <h1>Right Sidebar</h1>
+          <article>
+            <h2>Whats New in the Media</h2>
+          </article>
+          <article>
+            <h2>Suggested Friends</h2>
+          </article>
+        </div>
+        <div sx={{display: 'flex', flex: 'bottom'}}>
+          <h6> &copy;Social Media</h6>
+        </div>
 
       </Container>
     </>
