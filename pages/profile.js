@@ -1,7 +1,6 @@
 import Head from 'next/head'
 import Header from '../components/Header'
 import Sidebar from '../components/Sidebar'
-
 import styles from '../styles/Home.module.css'
 import { signIn, signOut, useSession } from 'next-auth/react';
 import SidebarRight from '../components/SidebarRight'
@@ -10,6 +9,11 @@ import Footer from '../components/Footer'
 import { Grid, Pagination, Container, Box } from '@mui/material'
 
 export default function Profile() {
+
+  const { data: session, status } = useSession();
+    console.log('profile.js session: ', session)
+
+
   return (
     <div>
       <Header />
@@ -37,13 +41,13 @@ export default function Profile() {
               <Grid container spacing={3}>
                 {/* We will need to map through the data and create a grid item containing the mediaitem for each one */}
                 <Grid item xs={4}>
-                  <MediaItem />
+                  {/* <MediaItem /> */}
                 </Grid>
                 <Grid item xs={4}>
-                  <MediaItem />
+                  {/* <MediaItem /> */}
                 </Grid>
                 <Grid item xs={4}>
-                  <MediaItem />
+                  {/* <MediaItem /> */}
                 </Grid>
               </Grid>
             </Container>

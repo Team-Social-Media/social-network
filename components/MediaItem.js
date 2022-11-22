@@ -35,7 +35,13 @@ const style = {
   p: 4,
 };
 
-export default function MediaItem({ item }) {
+export default function MediaItem(props) {
+
+  const item = props.item;
+  const handleFavorites = props.handleFavorites;
+
+  console.log('mediaItem.js item: ', item)
+
   const [isLiked, setIsLiked] = React.useState(false);
   const [open, setOpen] = React.useState(false);
 
@@ -44,9 +50,10 @@ export default function MediaItem({ item }) {
 
   const handleLikeClick = () => {
     setIsLiked(!isLiked);
+    handleFavorites(item);
   }
 
-  const icon = () => {
+  const icon = (item) => {
     if (item.medium === 'music') {
       return <Avatar sx={{ bgcolor: blue[500] }} aria-label="recipe">
         <LibraryMusicIcon />
@@ -62,7 +69,7 @@ export default function MediaItem({ item }) {
     }
   }
 
-  const itemImage = () => {
+  const itemImage = (item) => {
     if (!item.image || /undefined/gi.test(item.image)) {
       if (item.medium === 'book') {
         return <Image src='/book.png'
@@ -103,7 +110,7 @@ export default function MediaItem({ item }) {
     <>
       <Card sx={{ maxWidth: 345, justifyContent: "center" }} elevation={24} className={mediaStyles.card}>
         <CardHeader
-          avatar={icon()}
+          avatar={icon(item)}
           action={
             <>
               <IconButton aria-label="details" onClick={handleOpen}>
@@ -117,7 +124,7 @@ export default function MediaItem({ item }) {
               >
                 <Card sx={style} className={mediaStyles.card} position='relative'>
                   <CardHeader
-                    avatar={icon()}
+                    avatar={icon(item)}
                     action={
                       <>
                         <IconButton aria-label="close" onClick={handleClose}>
@@ -129,7 +136,7 @@ export default function MediaItem({ item }) {
                     subheader={item.author}
                   />
                   <CardMedia sx={{ display: 'flex', justifyContent: 'center' }}>
-                    {itemImage()}
+                    {itemImage(item)}
                   </CardMedia>
                 </Card>
               </Modal>
@@ -140,7 +147,7 @@ export default function MediaItem({ item }) {
           sx={{ height: 92 }}
         />
         <CardMedia sx={{ display: 'flex', justifyContent: 'center' }}>
-          {itemImage()}
+          {itemImage(item)}
         </CardMedia>
         <CardActions disableSpacing>
           <Typography variant="body2" color="text.secondary">
