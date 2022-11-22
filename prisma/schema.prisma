@@ -80,6 +80,9 @@ model users {
   email_verified DateTime?  @db.Timestamptz(6)
   image          String?    @db.VarChar(255)
   favorites      String[]   @db.VarChar(255)
+  comments       String[]   @db.VarChar(255)
+  friends        String[]   @db.VarChar(255)
+  posts          String[]   @db.VarChar(255)
   accounts       accounts[]
   sessions       sessions[]
 }
@@ -88,4 +91,22 @@ model verification_tokens {
   token      String   @id @db.VarChar(255)
   identifier String   @db.VarChar(255)
   expires    DateTime @db.Timestamptz(6)
+}
+
+model posts {
+  id          String   @id @db.VarChar(255)
+  title       String?  @db.VarChar(255)
+  image       String?  @db.VarChar(255)
+  description String?  @db.VarChar(255)
+  content     String?
+  favoritedBy String[] @db.VarChar(255)
+  comments    String[] @db.VarChar(255)
+  rating      String?  @db.VarChar(255)
+}
+
+model comments {
+  id      String   @id @db.VarChar(255)
+  userID  String?  @db.VarChar(255)
+  content String?
+  likedBy String[] @db.VarChar(255)
 }
