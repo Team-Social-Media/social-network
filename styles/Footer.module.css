@@ -1,13 +1,16 @@
 .footer {
-  position: fixed;
   bottom: 0;
   height: 10vh;
-  width: 100vw;
+  width: 45vh;
+  margin: auto;
+  position: sticky;
   display: flex;
+  align-items: center;
   flex: 1;
   padding: 1rem 0;
   border-top: 1px solid #eaeaea;
   justify-content: center;
-  align-items: center;
   background-color: black;
+  border-radius: 15px;
+  box-shadow: 5px;
 }
