@@ -8,7 +8,6 @@ const Footer = () => {
       </footer>
     </>
   )
-
 }
 
 
