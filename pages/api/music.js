@@ -1,6 +1,18 @@
+import { getSession } from 'next-auth/react';
+
 // require('dotenv').config();
 
 let music = async (req, res) => {
+
+  const session = await getSession({req});
+
+  console.log(session);
+  
+  if (!session) {
+    return (
+      res.status(401).send('Unauthorized')
+    )
+  }
 
   const axios = require('axios');
   const env = require('dotenv').config();
