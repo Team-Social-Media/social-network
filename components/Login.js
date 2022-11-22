@@ -2,7 +2,7 @@ import Link from 'next/link'
 import loginStyles from '../styles/Nav.module.css'
 import { signIn, signOut, useSession } from 'next-auth/react';
 import React, { useState } from 'react';
-import { IconButton } from '@mui/material';
+import { Button, IconButton } from '@mui/material';
 import { Menu, MenuItem } from '@mui/material';
 
 const Login = () => {
@@ -56,7 +56,7 @@ const Login = () => {
 
                     {!user && (
                         <>
-                            <button onClick={() => signIn()}>Sign In</button>
+                            <Button variant="contained" onClick={() => signIn()}>Sign In</Button>
                             {console.log(session)}
                         </>
                     )}

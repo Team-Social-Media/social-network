@@ -16,6 +16,9 @@ import { Grid, Pagination, Container } from '@mui/material'
 import { useEffect, useState } from 'react';
 // import Testing from './testing'
 
+const Chance = require('chance');
+const chance = new Chance();
+
 export async function getServerSideProps(context) {
   const session = await getSession(context);
 
@@ -57,6 +60,7 @@ export default function Home() {
       let i = user.favorites.indexOf(favItem);
       user.favorites.splice(i, 1);
     } else {
+      favItem['id']= chance.guid();
       user.favorites.push(favItem);
     }
     console.log('user: ', user)
@@ -80,9 +84,9 @@ export default function Home() {
           <Sidebar setData={setData} />
         </Grid>
         <Grid item xs={8}>
-          <Grid container spacing={3}>
+          <Grid container spacing={3} sx={{margin: 'auto'}}>
             {data.slice(startingData, endingData).map(item => (
-              <Grid key={item.id} item xs={4}>
+              <Grid key={chance.guid()} item xs={4}>
                 <MediaItem item={item} 
                 handleFavorites={handleFavorites}/>
               </Grid>
