@@ -53,14 +53,8 @@ export default function Home() {
 
       <Header />
       <Grid className={styles['main-grid']} container spacing={3}>
-<<<<<<< HEAD
       <Grid item xs={12}>
           <Container sx={{height: '5vh'}}></Container>
-=======
-        <Grid item xs={12}>
-          <Container sx={{height: '5vh'}}>
-          </Container>
->>>>>>> 99fe6c6 (spacing fix, grid shift down, and spacing with cards.)
         </Grid>
         <Grid item xs={2}>
           <Sidebar setData={setData} />
