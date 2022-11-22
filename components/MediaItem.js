@@ -101,7 +101,7 @@ export default function MediaItem({ item }) {
 
   return (
     <>
-      <Card sx={{ maxWidth: 345 }} elevation={24} className={mediaStyles.card}>
+      <Card sx={{ maxWidth: 345, justifyContent: "center" }} elevation={24} className={mediaStyles.card}>
         <CardHeader
           avatar={icon()}
           action={
