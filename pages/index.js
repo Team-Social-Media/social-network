@@ -74,13 +74,13 @@ export default function Home() {
       <Header />
       <Grid className={styles['main-grid']} container spacing={3}>
       <Grid item xs={12}>
-          <Container sx={{height: '5vh'}}></Container>
+          <Container sx={{height: '10vh'}}></Container>
         </Grid>
         <Grid item xs={2}>
           <Sidebar setData={setData} />
         </Grid>
         <Grid item xs={8}>
-          <Grid container spacing={3}>
+          <Grid container spacing={3} sx={{margin: 'auto'}}>
             {data.slice(startingData, endingData).map(item => (
               <Grid key={item.id} item xs={4}>
                 <MediaItem item={item} 
