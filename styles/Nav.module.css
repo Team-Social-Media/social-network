@@ -1,7 +1,7 @@
 .nav {
   height: 80px;
   padding: 10px;
-  background-color: 'inherit';
+  background-color: '#4A6670';
   color: #fff;
   display: flex;
   align-items: center;
@@ -16,7 +16,7 @@
   list-style: none;
   padding: 10px;
   margin: 20px;
-  color: azure;
+  color: #fff;
 }
 
 .nav ul li a {
