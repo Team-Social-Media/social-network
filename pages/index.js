@@ -14,7 +14,9 @@ import MediaItem from '../components/MediaItem'
 import Footer from '../components/Footer'
 import { Grid, Pagination } from '@mui/material'
 import { useEffect, useState } from 'react';
-// import Testing from './testing'
+
+import { useSelector, useDispatch } from 'react-redux';
+
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
@@ -46,12 +48,13 @@ export default function Home() {
   const { data: session, status } = useSession();
     console.log('profile.js session: ', session)
 
-  const user = {
-    email: session.user.email,
-    name: session.user.name,
-    favorites: [],
-  }
+  // const user = {
+  //   email: session.user.email,
+  //   name: session.user.name,
+  //   favorites: [],
+  // }
 
+ 
   const handleFavorites = (favItem) => {
     if(user.favorites.includes(favItem)) {
       let i = user.favorites.indexOf(favItem);
