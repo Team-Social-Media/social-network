@@ -5,7 +5,6 @@ import styles from '../styles/Home.module.css'
 import React from 'react';
 import Link from 'next/link';
 import { getSession, signIn, signOut, useSession } from 'next-auth/react';
-
 // needed for structure and css
 import Header from '../components/Header.js'
 import Sidebar from '../components/Sidebar'

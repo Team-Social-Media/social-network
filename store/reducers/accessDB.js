@@ -7,7 +7,7 @@ const  DBSlice = createSlice({
   },
   reducers: {
     getAll: table => {
-      return async(dispatch,getState) =>{
+      return async() =>{
         try{
           const prisma = new PrismaClient()
           const allUsers = await prisma[table].findMany()
@@ -16,11 +16,10 @@ const  DBSlice = createSlice({
         catch(err){
           console.log('getAll from accessDB failed!');
         }
-
       }
     },
     getOne: (table,userName) => {
-      return async (dispatch, getState) => {
+      return async () => {
         try {
           const prisma = new PrismaClient()
           const user = await prisma[table].findFirst({
@@ -32,8 +31,26 @@ const  DBSlice = createSlice({
         }
       }
     },
-    upsert: (state, action) => {
-      console.log('upsert');
+    upsertUser: (table,data) => {
+      console.log('upsert user');
+      try{
+        prisma[table].upsert({
+        where: {
+          id: [data.id],
+        },
+        create: {
+          id: [data.id],
+          name: [data.name],
+          image: [data.image],
+          email: [data.email],
+          email_verified:'',
+          favorites:[data.favorites],
+        }
+      })
+    }
+    catch(err){
+      console.log("ERROR in upsert user");
+    }
     }
   }
 })
