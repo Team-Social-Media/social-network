@@ -30,6 +30,9 @@ export default async function handler(req, res) {
         }
       })
     console.log('books res: ', res)
+    //write response data to database
+      
+
     return res;
   } catch (error) {
     console.error('Error in books.js: ', error)
