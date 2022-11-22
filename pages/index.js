@@ -36,6 +36,12 @@ export async function getServerSideProps(context) {
 export default function Home() {
   // const { data: session, status } = useSession();
   const [data, setData] = useState([]);
+  const [page, setPage] = useState(1);
+
+  const pageSize = 6;
+  const numPages = Math.ceil(data.length / pageSize);
+  const startingData = (page - 1) * pageSize;
+  const endingData = startingData + pageSize;
 
   return (
     <>
@@ -46,19 +52,19 @@ export default function Home() {
       </Head>
 
       <Header />
-      <Grid container spacing={3}>
+      <Grid className={styles['main-grid']} container spacing={3}>
         <Grid item xs={2}>
           <Sidebar setData={setData} />
         </Grid>
         <Grid item xs={8}>
           <Grid container spacing={3}>
-            {data.map(item => (
+            {data.slice(startingData, endingData).map(item => (
               <Grid key={item.id} item xs={4}>
                 <MediaItem item={item}/>
               </Grid>
             ))}
           </Grid>
-          <Pagination count={10} />
+          {data.length > 0 ? <Pagination onChange={(_, page) => setPage(page)} count={numPages} /> : null}
         </Grid>
         <Grid item xs={2}>
           <SidebarRight />
