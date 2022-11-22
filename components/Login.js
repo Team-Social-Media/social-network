@@ -18,7 +18,6 @@ const Login = () => {
         setOpen(true);
     }
 
-
     const { data: session, status } = useSession();
     console.log(session)
 
@@ -40,13 +39,16 @@ const Login = () => {
                                 aria-label="menu"
                                 sx={{ mr: 2 }}    
                             >
-                                <img alt='avatar' src={session.user.image} height='50' width='50' overflow='hidden' />
+                                <img alt='avatar' src={session.user.image} height='50' width='50'  />
                                 </IconButton>
 
                             <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
-                                <MenuItem onClick={handleClose}>
+                                {/* <MenuItem onClick={handleClose}>
                                 <button onClick={() => signOut()} sx={{ align: 'center' }}>Sign Out</button>
-                                </MenuItem>
+                                </MenuItem> */}
+                                <MenuItem onClick={() => signOut()} sx={{ align: 'center' }}>
+                                Sign Out</MenuItem>
+
                             </Menu>
                             
                         </>
