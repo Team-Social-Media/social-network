@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { useState } from 'react';
 import Box from '@mui/material/Box';
-import Container from '@mui/material/Container';
+import Stack from '@mui/material/Stack';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
@@ -21,7 +21,7 @@ function Sidebar({ setData }) {
 
   return (
     <>
-      <Container sx={{ height: '88vh', top: '10vh', width: 'auto', backgroundColor: '#668F80', position: 'fixed', boxShadow: '5px 5px 5px grey', borderRadius: '5px 15px 15px 5px'}}>
+      <Stack sx={{ height: '88vh', top: '10vh', width: '30vh', backgroundColor: '#2F3C7E', position: 'fixed', boxShadow: '5px 5px 5px grey', borderRadius: '5px 15px 15px 5px', textAlign: 'center'}}>
           <h1>Browse Media</h1>
           <Box sx={{ textAlign: 'center' }}>
             <Typography variant='h5'>
@@ -72,7 +72,7 @@ function Sidebar({ setData }) {
               </IconButton>
             </Paper> : null}
           </Box>
-      </Container>
+      </Stack>
 
     </>
   )
