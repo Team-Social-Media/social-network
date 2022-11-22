@@ -49,8 +49,9 @@ export default function MediaItem(props) {
   const handleClose = () => setOpen(false);
 
   const handleLikeClick = () => {
-    setIsLiked(!isLiked);
     handleFavorites(item);
+    setIsLiked(!isLiked);
+    
   }
 
   const icon = (item) => {

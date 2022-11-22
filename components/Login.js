@@ -4,6 +4,7 @@ import { signIn, signOut, useSession } from 'next-auth/react';
 import React, { useState } from 'react';
 import { Menu, MenuItem, IconButton, Avatar } from '@mui/material';
 
+
 const Login = () => {
     const [anchorEl, setAnchorEl] = useState(null);
     const [open, setOpen] = useState(false);
@@ -55,7 +56,7 @@ const Login = () => {
 
                     {!user && (
                         <>
-                            <button onClick={() => signIn()}>Sign In</button>
+                            <Button variant="contained" onClick={() => signIn()}>Sign In</Button>
                             {console.log(session)}
                         </>
                     )}

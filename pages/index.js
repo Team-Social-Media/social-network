@@ -5,7 +5,6 @@ import styles from '../styles/Home.module.css'
 import React from 'react';
 import Link from 'next/link';
 import { getSession, signIn, signOut, useSession } from 'next-auth/react';
-
 // needed for structure and css
 import Header from '../components/Header.js'
 import Sidebar from '../components/Sidebar'
@@ -14,7 +13,12 @@ import MediaItem from '../components/MediaItem'
 import Footer from '../components/Footer'
 import { Grid, Pagination, Box } from '@mui/material'
 import { useEffect, useState } from 'react';
-// import Testing from './testing'
+
+import { useSelector, useDispatch } from 'react-redux';
+
+
+const Chance = require('chance');
+const chance = new Chance();
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
@@ -46,17 +50,19 @@ export default function Home() {
   const { data: session, status } = useSession();
     console.log('profile.js session: ', session)
 
-  const user = {
-    email: session.user.email,
-    name: session.user.name,
-    favorites: [],
-  }
+  // const user = {
+  //   email: session.user.email,
+  //   name: session.user.name,
+  //   favorites: [],
+  // }
 
+ 
   const handleFavorites = (favItem) => {
     if(user.favorites.includes(favItem)) {
       let i = user.favorites.indexOf(favItem);
       user.favorites.splice(i, 1);
     } else {
+      favItem['id']= chance.guid();
       user.favorites.push(favItem);
     }
     console.log('user: ', user)
@@ -82,7 +88,7 @@ export default function Home() {
         <Grid item xs={8}>
           <Grid container spacing={3} sx={{margin: 'auto'}}>
             {data.slice(startingData, endingData).map(item => (
-              <Grid key={item.id} item xs={4}>
+              <Grid key={chance.guid()} item xs={4}>
                 <MediaItem item={item} 
                 handleFavorites={handleFavorites}/>
               </Grid>
