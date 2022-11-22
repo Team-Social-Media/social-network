@@ -14,7 +14,7 @@ import MediaItem from '../components/MediaItem'
 import Footer from '../components/Footer'
 import { Grid, Pagination } from '@mui/material'
 import { useEffect, useState } from 'react';
-// import Testing from './testing'
+import Testing from './testing'
 
 export default function Home() {
   // const { data: session, status } = useSession();
@@ -47,7 +47,7 @@ export default function Home() {
           <SidebarRight />
         </Grid>
       </Grid>
-    {/* <Testing /> */}
+    <Testing />
       <div className={styles.footer}>
         <Footer />
       </div>

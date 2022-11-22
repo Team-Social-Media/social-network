@@ -17,11 +17,12 @@ import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { Modal, Rating } from '@mui/material';
+import { Box, Button, Dialog, DialogActions, DialogTitle, Modal, Rating } from '@mui/material';
 import { green, blue, deepPurple } from '@mui/material/colors';
-
 import Image from 'next/image';
 import vercelPic from '../public/vercel.svg';
+import Favorites from './Favorites';
+
 
 const style = {
   position: 'absolute',
@@ -43,6 +44,7 @@ export default function MediaItem({ item }) {
   const handleClose = () => setOpen(false);
 
   const handleLikeClick = () => {
+    console.log(item);
     setIsLiked(!isLiked);
   }
 
@@ -154,6 +156,7 @@ export default function MediaItem({ item }) {
             Add to favorites
           </Typography>
           <IconButton aria-label="add to favorites" onClick={handleLikeClick}>
+          {/* <IconButton aria-label="add to favorites" onClick={()=> Favorites({item, setIsLiked})}> */}
             {button}
           </IconButton>
         </CardActions>
