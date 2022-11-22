@@ -1,18 +1,23 @@
-import Head from 'next/head'
-import Header from '../components/Header'
-import Sidebar from '../components/Sidebar'
-import styles from '../styles/Home.module.css'
+import Head from 'next/head';
+import Header from '../components/Header';
+import Sidebar from '../components/Sidebar';
+import styles from '../styles/Home.module.css';
 import { signIn, signOut, useSession } from 'next-auth/react';
-import SidebarRight from '../components/SidebarRight'
-import MediaItem from '../components/MediaItem'
-import Footer from '../components/Footer'
-import { Grid, Pagination, Container, Box } from '@mui/material'
+import SidebarRight from '../components/SidebarRight';
+import FavItem from '../components/FavItem';
+import Footer from '../components/Footer';
+import { Grid, Pagination, Container, Box } from '@mui/material';
 
 export default function Profile() {
 
   const { data: session, status } = useSession();
-    console.log('profile.js session: ', session)
+  console.log('profile.js session: ', session)
 
+  const user = { // temp placeholder for data pulled from db
+    email: 'session.user.email',
+    name: 'session.user.name',
+    favorites: [{ medium: "music", title: "Johnny Cash - The Essential Johnny Cash", image: "https://i.discogs.com/LMArge2QQ1Oovc8eCsr9oXtt8tBc1-0n57HiGF…lLWlt/YWdlcy9SLTE0Mjgw/MjYtMTU2NzE4MTA0/Mi02OTA5LmpwZWc.jpeg", artist: "Johnny Cash - The Essential Johnny Cash", year: "2002" }, { medium: "book", title: "The Marvelous Land of Oz", author: "L. Frank Baum", image: "https://covers.openlibrary.org/b/id/12648656-M.jpg", year: 1904 }, { medium: "book", title: "Everybody Poops!", author: "Justine Avery", image: "https://covers.openlibrary.org/b/id/10480058-M.jpg", year: 2019 }, { medium: "music", title: "Aviators (6) - A Song That Never Ends", image: "https://i.discogs.com/GavyQj8bAtY8Plqn6Aa-V2sZtLPJChgINEEQ8n…lLWlt/YWdlcy9SLTk1NDk0/NzQtMTQ4MjUyMjA3/Mi01OTAzLmpwZWc.jpeg", artist: "Aviators (6) - A Song That Never Ends", year: "2016" }],
+  }
 
   return (
     <div>
@@ -30,8 +35,8 @@ export default function Profile() {
           <Grid item xs={2}>
             <Sidebar />
           </Grid>
-          <div sx={{top: '10vh'}}>
-            
+          <div sx={{ top: '10vh' }}>
+
           </div>
           <Grid item xs={8}>
             <Container sx={{
@@ -39,16 +44,11 @@ export default function Profile() {
               top: '10vh'
             }}>
               <Grid container spacing={3}>
-                {/* We will need to map through the data and create a grid item containing the mediaitem for each one */}
-                <Grid item xs={4}>
-                  {/* <MediaItem /> */}
-                </Grid>
-                <Grid item xs={4}>
-                  {/* <MediaItem /> */}
-                </Grid>
-                <Grid item xs={4}>
-                  {/* <MediaItem /> */}
-                </Grid>
+              {user.favorites.map(item => (
+              <Grid key={item.id} item xs={4}>
+                <FavItem item={item} />
+              </Grid>
+            ))}
               </Grid>
             </Container>
             <Pagination count={10} />
