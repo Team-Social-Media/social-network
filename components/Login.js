@@ -2,8 +2,8 @@ import Link from 'next/link'
 import loginStyles from '../styles/Nav.module.css'
 import { signIn, signOut, useSession } from 'next-auth/react';
 import React, { useState } from 'react';
-import { Button, IconButton } from '@mui/material';
-import { Menu, MenuItem } from '@mui/material';
+import { Menu, MenuItem, IconButton, Avatar, Button } from '@mui/material';
+
 
 const Login = () => {
     const [anchorEl, setAnchorEl] = useState(null);
@@ -39,7 +39,7 @@ const Login = () => {
                                 aria-label="menu"
                                 sx={{ mr: 2 }}    
                             >
-                                <img alt='avatar' src={session.user.image} height='50' width='50'  />
+                                <Avatar alt='avatar' src={session.user.image} sx={{ height:'50', width:'50'}}  />
                                 </IconButton>
 
                             <Menu anchorEl={anchorEl} open={open} onClose={handleClose}>
