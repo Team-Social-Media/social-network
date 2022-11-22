@@ -1,0 +1,90 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model accounts {
+  id                  String  @id @db.Uuid
+  type                String  @db.VarChar(255)
+  provider            String  @db.VarChar(255)
+  provider_account_id String  @db.VarChar(255)
+  refresh_token       String? @db.VarChar(255)
+  access_token        String? @db.VarChar(255)
+  expires_at          Int?
+  token_type          String? @db.VarChar(255)
+  scope               String? @db.VarChar(255)
+  id_token            String? @db.VarChar(255)
+  session_state       String? @db.VarChar(255)
+  user_id             String? @db.Uuid
+  users               users?  @relation(fields: [user_id], references: [id], onDelete: Cascade)
+}
+
+model books {
+  searchQuery String  @id @db.VarChar(255)
+  author      String? @db.VarChar(255)
+  imgSrc      String? @db.VarChar(255)
+  title       String? @db.VarChar(255)
+  internalId  String? @db.VarChar(255)
+}
+
+model groups {
+  page_ID      String  @id @db.VarChar(20)
+  page_name    String? @db.VarChar(20)
+  page_content String?
+}
+
+model movies {
+  searchQuery String  @id @db.VarChar(255)
+  title       String? @db.VarChar(255)
+  imgSrc      String? @db.VarChar(255)
+  description String? @db.VarChar(255)
+  internalId  String? @db.VarChar(255)
+}
+
+model music {
+  searchQuery String  @id @db.VarChar(255)
+  artist      String? @db.VarChar(255)
+  imgSrc      String? @db.VarChar(255)
+  title       String? @db.VarChar(255)
+  year        String? @db.VarChar(255)
+  internalId  String? @db.VarChar(255)
+}
+
+model sessions {
+  id            String   @id @db.Uuid
+  expires       DateTime @db.Timestamptz(6)
+  session_token String   @unique @db.VarChar(255)
+  user_id       String?  @db.Uuid
+  users         users?   @relation(fields: [user_id], references: [id], onDelete: Cascade)
+}
+
+model test_table {
+  user_ID      String     @id @db.Uuid
+  name_first   String?    @db.VarChar(20)
+  name_last    String?    @db.VarChar(20)
+  email        String?    @db.VarChar(50)
+  phone        String?    @db.VarChar(20)
+  location     String?    @db.VarChar(50)
+  birthdate    DateTime[] @db.Date
+  name_display String?    @db.VarChar(20)
+}
+
+model users {
+  id             String     @id @db.Uuid
+  name           String?    @db.VarChar(255)
+  email          String?    @unique @db.VarChar(255)
+  email_verified DateTime?  @db.Timestamptz(6)
+  image          String?    @db.VarChar(255)
+  accounts       accounts[]
+  sessions       sessions[]
+}
+
+model verification_tokens {
+  token      String   @id @db.VarChar(255)
+  identifier String   @db.VarChar(255)
+  expires    DateTime @db.Timestamptz(6)
+}
