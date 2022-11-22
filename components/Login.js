@@ -2,7 +2,7 @@ import Link from 'next/link'
 import loginStyles from '../styles/Nav.module.css'
 import { signIn, signOut, useSession } from 'next-auth/react';
 import React, { useState } from 'react';
-import { Menu, MenuItem, IconButton, Avatar } from '@mui/material';
+import { Menu, MenuItem, IconButton, Avatar, Button } from '@mui/material';
 
 
 const Login = () => {
