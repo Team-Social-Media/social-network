@@ -1,14 +1,21 @@
 import React from "react";
 import Sidebar from "./Sidebar";
+import SidebarRight from "./SidebarRight";
+import Header from "./Header";
+import Footer from "./Footer";
 
-const Layout = () => {
+import Box from '@mui/material/Box'
+
+
+
+const Layout = ({children}) => {
   return (
-    <div className="h-screen flex flex-row justify-start">
-      <Sidebar />
-
-      <div className="bg-primary flex-1 p-4 text-white border-1 border-dashed">
-        blog dashboard
-      </div>
-    </div>
+    <Box className="h-screen flex flex-row justify-start">
+      <Header />
+        {children}
+      <Footer />
+    </Box>
   )
 }
+
+export default Layout;

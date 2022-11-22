@@ -6,8 +6,8 @@ function SidebarRight() {
   return (
     <>
 
-      <Stack sx={{ height: '88vh', top: '10vh', paddingLeft: '20px', width: 'auto', backgroundColor: '#668F80', position: 'fixed', boxShadow: '5px 5px 5px grey', flexGrow: 1, borderRadius: '15px 5px 15px 15px', padding: '5px', textAlign: 'center' }}>
-        <Box sx={{ flexGrow: 1,  }}>
+      <Stack sx={{ height: '88vh', top: '10vh', paddingLeft: '20px', minWidth: '5vw', backgroundColor: '#2F3C7E', position: 'fixed', boxShadow: '5px 5px 5px grey', borderRadius: '15px 5px 15px 15px', textAlign: 'center' }}>
+        <Box sx={{ flexGrow: 1,  padding: '1px'}}>
           <h1>Right Sidebar</h1>
 
           <h2>Whats New in the Media</h2>

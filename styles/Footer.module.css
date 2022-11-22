@@ -1,15 +1,14 @@
 .footer {
   position: static;
-  bottom: 0;
   height: 10vh;
   width: 45vw;
   display: flex;
   flex: 1;
-  padding: 1rem 0;
+
   border-top: 1px solid #eaeaea;
-  justify-content: center;
+  justify-content: center;  
   align-items: center;
-  background-color: black;
+  background-color: #2F3C7E;
   border-Radius: 15px;
   margin: auto;
 }

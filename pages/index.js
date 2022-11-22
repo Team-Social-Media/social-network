@@ -12,7 +12,7 @@ import Sidebar from '../components/Sidebar'
 import SidebarRight from '../components/SidebarRight'
 import MediaItem from '../components/MediaItem'
 import Footer from '../components/Footer'
-import { Grid, Pagination, Container } from '@mui/material'
+import { Grid, Pagination, Box } from '@mui/material'
 import { useEffect, useState } from 'react';
 // import Testing from './testing'
 
@@ -71,10 +71,10 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header />
+      <main>
       <Grid className={styles['main-grid']} container spacing={3}>
       <Grid item xs={12}>
-          <Container sx={{height: '10vh'}}></Container>
+          <Box sx={{padding: '3vh'}}></Box>
         </Grid>
         <Grid item xs={2}>
           <Sidebar setData={setData} />
@@ -94,10 +94,7 @@ export default function Home() {
           <SidebarRight />
         </Grid>
       </Grid>
-    {/* <Testing /> */}
-      <div className={styles.footer}>
-        <Footer />
-      </div>
+      </main>
     </>
 
   )
