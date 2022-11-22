@@ -11,11 +11,14 @@ import Sidebar from '../components/Sidebar'
 import SidebarRight from '../components/SidebarRight'
 import MediaItem from '../components/MediaItem'
 import Footer from '../components/Footer'
-import { Grid, Pagination } from '@mui/material'
+import { Grid, Pagination, Container } from '@mui/material'
 import { useEffect, useState } from 'react';
 
 import { useSelector, useDispatch } from 'react-redux';
 
+
+const Chance = require('chance');
+const chance = new Chance();
 
 export async function getServerSideProps(context) {
   const session = await getSession(context);
@@ -59,6 +62,7 @@ export default function Home() {
       let i = user.favorites.indexOf(favItem);
       user.favorites.splice(i, 1);
     } else {
+      favItem['id']= chance.guid();
       user.favorites.push(favItem);
     }
     console.log('user: ', user)
@@ -75,13 +79,16 @@ export default function Home() {
 
       <Header />
       <Grid className={styles['main-grid']} container spacing={3}>
+      <Grid item xs={12}>
+          <Container sx={{height: '5vh'}}></Container>
+        </Grid>
         <Grid item xs={2}>
           <Sidebar setData={setData} />
         </Grid>
         <Grid item xs={8}>
-          <Grid container spacing={3}>
+          <Grid container spacing={3} sx={{margin: 'auto'}}>
             {data.slice(startingData, endingData).map(item => (
-              <Grid key={item.id} item xs={4}>
+              <Grid key={chance.guid()} item xs={4}>
                 <MediaItem item={item} 
                 handleFavorites={handleFavorites}/>
               </Grid>
