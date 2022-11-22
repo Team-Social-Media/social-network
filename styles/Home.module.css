@@ -12,6 +12,11 @@
   align-items: center; */
 }
 
+.main-grid {
+  min-height: calc(100vh - 100px);
+  height: fit-content;
+}
+
 .footer {
   margin-top: auto;
 }

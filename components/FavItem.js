@@ -1,10 +1,8 @@
 import * as React from 'react';
 import mediaStyles from '../styles/Item.module.css'
-import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
-import CardContent from '@mui/material/CardContent';
 import CardActions from '@mui/material/CardActions';
 import Avatar from '@mui/material/Avatar';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
@@ -13,15 +11,11 @@ import LiveTvIcon from '@mui/icons-material/LiveTv';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
-import { red } from '@mui/material/colors';
-import FavoriteIcon from '@mui/icons-material/Favorite';
-import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
+import DeleteIcon from '@mui/icons-material/Delete';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
-import { Modal, Rating } from '@mui/material';
+import { CardContent, Modal, Rating } from '@mui/material';
 import { green, blue, deepPurple } from '@mui/material/colors';
-
 import Image from 'next/image';
-import vercelPic from '../public/vercel.svg';
 
 const style = {
   position: 'absolute',
@@ -35,16 +29,11 @@ const style = {
   p: 4,
 };
 
-export default function MediaItem({ item }) {
-  const [isLiked, setIsLiked] = React.useState(false);
+export default function FavItem({ item }) {
   const [open, setOpen] = React.useState(false);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
-  const handleLikeClick = () => {
-    setIsLiked(!isLiked);
-  }
 
   const icon = () => {
     if (item.medium === 'music') {
@@ -63,7 +52,7 @@ export default function MediaItem({ item }) {
   }
 
   const itemImage = () => {
-    if (!item.image || /undefined/gi.test(item.image)) {
+    if (!item.image) {
       if (item.medium === 'book') {
         return <Image src='/book.png'
           alt='book'
@@ -90,13 +79,6 @@ export default function MediaItem({ item }) {
         height={280}
       />
     }
-  }
-
-  let button;
-  if (isLiked) {
-    button = <FavoriteIcon sx={{ color: red[500] }} />;
-  } else {
-    button = <FavoriteBorderOutlinedIcon sx={{ color: red[500] }} />;
   }
 
   return (
@@ -131,23 +113,34 @@ export default function MediaItem({ item }) {
                   <CardMedia sx={{ display: 'flex', justifyContent: 'center' }}>
                     {itemImage()}
                   </CardMedia>
+                  <CardContent>
+                    <Rating name="read-only" value={5} readOnly />
+                    <Typography variant="body2" color="text.secondary">
+                      USERS CAPTION/NOTES GO HERE
+                    </Typography>
+                  </CardContent>
                 </Card>
               </Modal>
             </>
           }
           title={item.title}
           subheader={item.author}
-          sx={{ height: 92 }}
         />
         <CardMedia sx={{ display: 'flex', justifyContent: 'center' }}>
           {itemImage()}
         </CardMedia>
+        <CardContent>
+          <Rating name="read-only" value={5} readOnly />
+          <Typography variant="body2" color="text.secondary">
+            USERS CAPTION/NOTES GO HERE
+          </Typography>
+        </CardContent>
         <CardActions disableSpacing>
           <Typography variant="body2" color="text.secondary">
             Add to favorites
           </Typography>
-          <IconButton aria-label="add to favorites" onClick={handleLikeClick}>
-            {button}
+          <IconButton aria-label="delete">
+            Remove from favorites <DeleteIcon />
           </IconButton>
         </CardActions>
       </Card>
