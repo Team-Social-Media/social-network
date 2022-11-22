@@ -1,4 +1,4 @@
-import { Grid } from '@mui/material';
+import { Card, Grid } from '@mui/material';
 import { Box } from '@mui/system';
 import { getSession } from 'next-auth/react';
 import Head from 'next/head';
@@ -43,13 +43,15 @@ export default function LandingLogin() {
           item
           xs={3}
         >
-          <Box className={styles.login}>
-            <h1 className={styles.h1}>Welcome to Social Media</h1>
-            <h3 className={styles.h3}>Please sign in to get started</h3>
-            <div className={styles.button}>
-              <Login />
+          <Card className={styles.login}>
+            <div>
+              <h1 className={styles.h1}>Welcome to Social Media</h1>
+              <h3 className={styles.h3}>Please sign in to get started</h3>
+              <div className={styles.button}>
+                <Login />
+              </div>
             </div>
-          </Box>
+          </Card>
         </Grid>
 
       </Grid>
