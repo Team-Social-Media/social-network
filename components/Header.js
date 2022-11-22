@@ -16,13 +16,13 @@ const Header = () => {
 
   return (
     <>
-      <header sx={{ flexGrow: 1, position: 'relative' }}>
-        <AppBar position="static">
+      <header sx={{ flexGrow: 1, position: 'fixed' }}>
+        <AppBar position="fixed">
           <Toolbar>
             <IconButton
               size="large"
               edge="start"
-              color="inherit"
+              color="#4A6670"
               aria-label="menu"
               sx={{ mr: 2 }}
             >
