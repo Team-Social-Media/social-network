@@ -4,7 +4,7 @@ import styles from '../styles/Home.module.css'
 // needed for auth
 import React from 'react';
 import Link from 'next/link';
-import { signIn, signOut, useSession } from 'next-auth/react';
+import { getSession, signIn, signOut, useSession } from 'next-auth/react';
 
 // needed for structure and css
 import Header from '../components/Header.js'
@@ -15,6 +15,23 @@ import Footer from '../components/Footer'
 import { Grid, Pagination } from '@mui/material'
 import { useEffect, useState } from 'react';
 // import Testing from './testing'
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false,
+      },
+    }
+  }
+
+  return {
+    props: { session }
+  }
+}
 
 export default function Home() {
   // const { data: session, status } = useSession();
