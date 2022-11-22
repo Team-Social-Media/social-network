@@ -5,7 +5,6 @@ import styles from '../styles/Home.module.css'
 import React from 'react';
 import Link from 'next/link';
 import { getSession, signIn, signOut, useSession } from 'next-auth/react';
-
 // needed for structure and css
 import Header from '../components/Header.js'
 import Sidebar from '../components/Sidebar'
@@ -14,7 +13,9 @@ import MediaItem from '../components/MediaItem'
 import Footer from '../components/Footer'
 import { Grid, Pagination, Container } from '@mui/material'
 import { useEffect, useState } from 'react';
-// import Testing from './testing'
+
+import { useSelector, useDispatch } from 'react-redux';
+
 
 const Chance = require('chance');
 const chance = new Chance();
@@ -49,12 +50,13 @@ export default function Home() {
   const { data: session, status } = useSession();
     console.log('profile.js session: ', session)
 
-  const user = {
-    email: session.user.email,
-    name: session.user.name,
-    favorites: [],
-  }
+  // const user = {
+  //   email: session.user.email,
+  //   name: session.user.name,
+  //   favorites: [],
+  // }
 
+ 
   const handleFavorites = (favItem) => {
     if(user.favorites.includes(favItem)) {
       let i = user.favorites.indexOf(favItem);

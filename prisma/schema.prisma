@@ -79,6 +79,7 @@ model users {
   email          String?    @unique @db.VarChar(255)
   email_verified DateTime?  @db.Timestamptz(6)
   image          String?    @db.VarChar(255)
+  favorites      String[]   @db.VarChar(255)
   accounts       accounts[]
   sessions       sessions[]
 }
