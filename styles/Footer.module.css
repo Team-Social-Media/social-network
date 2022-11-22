@@ -9,8 +9,12 @@
   justify-content: center;
   align-items: center;
   background-color: black;
+<<<<<<< HEAD
   margin: auto;
   position: sticky;
   border-radius: 15px;
   box-shadow: 5px;
+=======
+  
+>>>>>>> 99fe6c6 (spacing fix, grid shift down, and spacing with cards.)
 }
