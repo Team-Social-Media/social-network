@@ -1,6 +1,6 @@
 # Social-Network
 
-### Team Members
+## Team Members
 
 * Hayden Cleaver
 * Isaiah Keller
@@ -11,22 +11,27 @@
 
 ### Problem Domain
 
-Concise Description of why this app exists
+This app allows users to access their favorite books, movies, and music and share with friends and family. To provide a platform for users to be able to share their interests with others, and only see content of that they choose. Users can keep track of all their favorite books, movies, and songs. They'll be able to add personalized notes for reference and edit their favorites to keep them up to date.
 
 ### Links and Resources
 
-- [ci/cd](http://xyz.com) (GitHub Actions)
-- [back-end server url](http://xyz.com) (when applicable)
-- [front-end application](http://xyz.com) (when applicable)
+* [Team-Social-Media](https://github.com/Team-Social-Media/social-network) (GitHub)
+
+* [back-end server url](http://xyz.com) (when applicable)
+
+* [front-end application](http://xyz.com) (when applicable)
 
 ### Setup
 
 #### `.env` requirements (where applicable)
 
-i.e.
+NEXT_PUBLIC_MOVIE_API=<https://imdb-api.com/en/API/>
+NEXT_PUBLIC_MUSIC_API=<https://api.discogs.com/database/search?q=>
+NEXT_PUBLIC_BOOKS_API=<http://openlibrary.org/search.json?q=>
 
-- `PORT` - Port Number
-- `DATABASE_URL` - URL to the running Postgres instance/db
+*`DATABASE_PORT` - 43048
+
+*`DATABASE_URL` - <http://dpg-cdrbu4h4reb95u682v50-a.oregon-postgres.render.com/>
 
 #### How to initialize/run your application (where applicable)
 
@@ -36,7 +41,14 @@ i.e.
 
 #### Features / Routes
 
-- Feature One: Details of feature
+* Feature: For a user to signIn using an existing GitHub or Google account to be authenticated. It displays their photo and a welcome greeting with user name.
+
+* Feature: A user is able to access three different API's to view media content.
+
+* Feature: A user is able to add heart to favorite content.
+
+* Feature: User is able to leave review on content.
+
 - GET : `/hello` - specific route to hit
 
 #### Tests
@@ -47,8 +59,6 @@ i.e.
 
 #### UML
 
-Link to an image of the UML for your application and response to events
+[Figma Whiteboard](https://www.figma.com/file/kWyXOwDU82DmGUER6qTyOl/Social-App?node-id=4%3A1521&t=cgeAqUb9rvjb8j99-1)
 
 #### References
-
-

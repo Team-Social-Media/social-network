@@ -1,42 +1,37 @@
-
-
 const movies = async (req, res) => {
-  
+
   const axios = require('axios');
   const env = require('env');
 
   let MOVIE_API = process.env.NEXT_PUBLIC_MOVIE_API;
   let MOVIE_Key = process.env.NEXT_PUBLIC_MOVIE_Key;
 
-  let query = 'shawshank redemption movie';
-  
-  const queryFormatter = (string) => {
-    if(string.includes(' ')){
-      let newArray = string.split(' ');
-      return newArray.join('%20');
-    }
+  console.log('movies.js req.query.title: ', req.query.title)
+
+  let query = req.query.title;
+
+  if (!query) {
+    return res.status(400).send({ message: 'Missing movie title in query string' });
   }
-  
-  let fQuery = queryFormatter(query) || query;
-  
-  let url = `${MOVIE_API}SearchAll/${MOVIE_Key}/${fQuery}`;
 
+  let url = `${MOVIE_API}SearchAll/${MOVIE_Key}/${query}`;
   try {
-
+    console.log('movies.js url: ', url)
     await axios.get(url)
       .then(response => {
-        // console.log('movies response.data: ', response.data.results)
-        const res = {
-          title: response.data.results[0].title,
-          image: response.data.results[0].image,
-          artist: response.data.results[2].title,
-          description: response.data.results[0].description,
-        }
-        console.log('movies res: ', res)
-
+        const data = response.data.results.slice(0, 10).map(result => ({
+          medium: 'movie',
+          title: result.title,
+          image: result.image,
+          artist: result.title,
+          description: result.description,
+        }));
+        res.status(200).send(data);
+        console.log('movies.js data: ', data)
       })
-  } catch(error) {
+  } catch (error) {
     console.error('Error in movies.js: ', error)
+    res.status(500).send([])
   }
 
 }

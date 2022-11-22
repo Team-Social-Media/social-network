@@ -1,6 +1,12 @@
-import Head from 'next/head'
+import Head from 'next/head';
 import styles from '../styles/Home.module.css'
-import { signIn, signOut, useSession } from 'next-auth/react';
+
+// needed for auth
+import React from 'react';
+import Link from 'next/link';
+import { getSession, signIn, signOut, useSession } from 'next-auth/react';
+
+// needed for structure and css
 import Header from '../components/Header.js'
 import Sidebar from '../components/Sidebar'
 import SidebarRight from '../components/SidebarRight'
@@ -8,18 +14,28 @@ import MediaItem from '../components/MediaItem'
 import Footer from '../components/Footer'
 import { Grid, Pagination } from '@mui/material'
 import { useEffect, useState } from 'react';
-import Testing from './testing'
+// import Testing from './testing'
+
+export async function getServerSideProps(context) {
+  const session = await getSession(context);
+
+  if (!session) {
+    return {
+      redirect: {
+        destination: '/login',
+        permanent: false,
+      },
+    }
+  }
+
+  return {
+    props: { session }
+  }
+}
 
 export default function Home() {
   // const { data: session, status } = useSession();
   const [data, setData] = useState([]);
-  useEffect(() => {
-    fetch('https://jsonplaceholder.typicode.com/todos')
-      .then((res) => res.json())
-      .then((data) => {
-        setData(data);
-      });
-  }, []);
 
   return (
     <>
@@ -32,13 +48,13 @@ export default function Home() {
       <Header />
       <Grid container spacing={3}>
         <Grid item xs={2}>
-          <Sidebar />
+          <Sidebar setData={setData} />
         </Grid>
         <Grid item xs={8}>
           <Grid container spacing={3}>
-            {data.map(_ => (
-              <Grid key={_.id} item xs={4}>
-                <MediaItem />
+            {data.map(item => (
+              <Grid key={item.id} item xs={4}>
+                <MediaItem item={item}/>
               </Grid>
             ))}
           </Grid>
@@ -48,7 +64,7 @@ export default function Home() {
           <SidebarRight />
         </Grid>
       </Grid>
-    <Testing />
+    {/* <Testing /> */}
       <div className={styles.footer}>
         <Footer />
       </div>

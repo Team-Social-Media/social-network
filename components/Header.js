@@ -9,42 +9,38 @@ import Button from '@mui/material/Button';
 import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Login from "./Login";
-import SearchBar from './SearchBar';
-
+// import SearchBar from './SearchBar';
+import { FaFortAwesome } from "react-icons/fa";
 
 const Header = () => {
 
-
-
   return (
     <>
-
-      <Box sx={{ flexGrow: 1 }}>
-        <AppBar position="static">
+      <header sx={{ flexGrow: 1, position: 'fixed' }}>
+        <AppBar position="fixed">
           <Toolbar>
             <IconButton
               size="large"
               edge="start"
-              color="inherit"
+              color="#4A6670"
               aria-label="menu"
               sx={{ mr: 2 }}
             >
-              <MenuIcon />
+              <FaFortAwesome />
             </IconButton>
             <Typography component="div" sx={{ flexGrow: 1 }}>
               <Typography variant='h3'>Social Media</Typography>
             </Typography>
-            <SearchBar />
+            {/* <SearchBar /> */}
             <Nav />
             <Login />
           </Toolbar>
         </AppBar>
-      </Box>
+      </header>
 
     </>
   )
 
 }
-
 
 export default Header;
