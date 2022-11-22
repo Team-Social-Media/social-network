@@ -1,6 +1,4 @@
 import React from "react";
-import Sidebar from "./Sidebar";
-import SidebarRight from "./SidebarRight";
 import Header from "./Header";
 import Footer from "./Footer";
 
