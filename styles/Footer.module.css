@@ -1,8 +1,7 @@
 .footer {
-  position: fixed;
   bottom: 0;
   height: 10vh;
-  width: 100vw;
+  width: 45vw;
   display: flex;
   flex: 1;
   padding: 1rem 0;
@@ -10,4 +9,8 @@
   justify-content: center;
   align-items: center;
   background-color: black;
+  margin: auto;
+  position: sticky;
+  border-radius: 15px;
+  box-shadow: 5px;
 }

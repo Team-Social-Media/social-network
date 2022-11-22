@@ -16,7 +16,7 @@ const Header = () => {
 
   return (
     <>
-      <header sx={{ flexGrow: 1, position: 'fixed' }}>
+      <header sx={{ flexGrow: 1, position: 'fixed, sticky' }}>
         <AppBar position="fixed">
           <Toolbar>
             <IconButton
