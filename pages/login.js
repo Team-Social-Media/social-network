@@ -45,7 +45,7 @@ export default function LandingLogin() {
         >
           <Card className={styles.login}>
             <div>
-              <h1 className={styles.h1}>Welcome to Social Media</h1>
+              <h1 className={styles.h1}>Welcome to Club Hub!</h1>
               <h3 className={styles.h3}>Please sign in to get started</h3>
               <div className={styles.button}>
                 <Login />

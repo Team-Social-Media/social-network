@@ -32,6 +32,7 @@ const style = {
 };
 
 export default function FavItem({ item }) {
+  const [value, setValue] = React.useState(1);
 
   const [open, setOpen] = React.useState(false);
   const [isLiked, setIsLiked] = React.useState(true);
@@ -146,7 +147,13 @@ export default function FavItem({ item }) {
           {itemImage()}
         </CardMedia>
         <CardContent>
-          <Rating name="read-only" value={5} readOnly />
+          <Rating
+            name="simple-controlled"
+            value={value}
+            onChange={(event, newValue) => {
+              setValue(newValue);
+            }}
+          />
           {/* <Typography variant="body2" color="text.secondary">
             USERS CAPTION/NOTES GO HERE
           </Typography> */}
