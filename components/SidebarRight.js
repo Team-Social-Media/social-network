@@ -81,7 +81,7 @@ function SidebarRight() {
             </>
             : null
           }
-          { 
+          {
           <Box sx={{ color: '#FBEAEB', backgroundColor: 'rainbow' ,height: '40%', width: 'auto', borderRadius: '10px',  }}>
           <Box sx={{ padding: '1px', mt: '20px' }}>
             <h2>Suggested Friends</h2>
@@ -91,18 +91,19 @@ function SidebarRight() {
           <Typography><a href=""> KC</a></Typography>
           <Typography><a href=""> Isaiah</a></Typography>
           <Typography><a href=""> Jun</a></Typography>
+          <Typography><a href=""> Teresa</a></Typography>
         </Box>
           }
         </Box>
 
         <Box sx={{ display: 'flex', paddingLeft: 'auto' }}>
-          <h5> &copy;Social Media</h5>
+          <h5> &copy;Club Hub</h5>
         </Box>
       </Stack>
 
 
 
-      
+
     </>
   )
 }

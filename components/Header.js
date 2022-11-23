@@ -22,7 +22,7 @@ const Header = () => {
               <FaFortAwesome sx={{}} />
             </IconButton>
             <Typography component="div" sx={{ flexGrow: 1 }}>
-              <Typography variant='h3'>Social Media</Typography>
+              <Typography variant='h3'>Club Hub</Typography>
             </Typography>
             {/* <SearchBar /> */}
             <Nav />
