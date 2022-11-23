@@ -52,7 +52,6 @@ function SidebarRight() {
           </Box>
 
   let url = `${MOVIE_API}InTheaters/${MOVIE_Key}`;
-  console.log('url: ', url)
 
   // async function getData() {
   //   try {
@@ -95,7 +94,7 @@ function SidebarRight() {
         <Box sx={{ flexGrow: 1 }}>
           {exampleData ?
             <>
-              <h2>Recommended</h2>
+              <h3>Recommended</h3>
               <Card>
                 {/* <CardHeader title={exampleData.title} /> */}
                 <CardMedia sx={{ display: 'flex', justifyContent: 'center' }} >
@@ -115,7 +114,7 @@ function SidebarRight() {
           }
           { 
             <>
-              <h2>Suggested Friends</h2>
+              <h3>Suggested Friends</h3>
             </>
           }
 

@@ -13,15 +13,12 @@ import LiveTvIcon from '@mui/icons-material/LiveTv';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
-import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Modal, Rating } from '@mui/material';
-import { green, blue, deepPurple } from '@mui/material/colors';
-
+import { green, blue, deepPurple, red } from '@mui/material/colors';
 import Image from 'next/image';
-import vercelPic from '../public/vercel.svg';
 
 const style = {
   position: 'absolute',
@@ -51,7 +48,6 @@ export default function MediaItem(props) {
   const handleLikeClick = () => {
     handleFavorites(item);
     setIsLiked(!isLiked);
-    
   }
 
   const icon = (item) => {
