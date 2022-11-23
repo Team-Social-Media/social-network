@@ -59,9 +59,11 @@ function SidebarRight() {
         <Box sx={{ flexGrow: 1 }}>
           {exampleData ?
             <>
-              <h2>Recommended</h2>
+
+              <h3>Recommended</h3>
               <Box sx={{}}>
               <Card sx={{}}>
+
                 {/* <CardHeader title={exampleData.title} /> */}
                 <CardMedia sx={{ display: 'flex', justifyContent: 'center' }} >
                   <Image
@@ -91,7 +93,6 @@ function SidebarRight() {
           <Typography><a href=""> Jun</a></Typography>
         </Box>
           }
-
         </Box>
 
         <Box sx={{ display: 'flex', paddingLeft: 'auto' }}>
