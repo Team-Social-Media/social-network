@@ -9,7 +9,6 @@ import SearchIcon from '@mui/icons-material/Search';
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
-import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 import LiveTvIcon from '@mui/icons-material/LiveTv';
 import { green, blue, deepPurple, red, black } from '@mui/material/colors';
 import MovieIcon from '@mui/icons-material/Movie';
