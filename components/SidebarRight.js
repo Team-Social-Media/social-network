@@ -55,8 +55,8 @@ function SidebarRight() {
 
   return (
     <>
-      <Stack sx={{ height: '88vh', top: '10vh', width: '10%', padding: '8px', backgroundColor: '#2F3C7E', right: '.05%', position: 'fixed', boxShadow: '5px 5px 5px grey', borderRadius: '15px', textAlign: 'center', paddingRight: '5px' }}>
-        <Box sx={{ flexGrow: 1 , margin: '5px'}}>
+      <Stack sx={{ height: '88vh', top: '10vh', width: '10%', paddingLeft: '20px', backgroundColor: '#2F3C7E', right: '.05%', position: 'fixed', boxShadow: '5px 5px 5px grey', borderRadius: '15px', textAlign: 'center', paddingRight: '5px' }}>
+        <Box sx={{ flexGrow: 1 }}>
           {exampleData ?
             <>
               <h3>Recommended</h3>
@@ -100,7 +100,7 @@ function SidebarRight() {
 
 
 
-
+      
     </>
   )
 }
