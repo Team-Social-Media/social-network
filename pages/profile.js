@@ -27,6 +27,7 @@ export async function getServerSideProps(context) {
 
 export default function Profile() {
 
+
   const { data: session, status } = useSession();
   console.log('profile.js session: ', session)
 
