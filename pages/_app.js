@@ -1,5 +1,6 @@
 import '../styles/globals.css'
 import { SessionProvider } from 'next-auth/react';
+import Layout from '../components/Layout';
 
 import { store } from "../store/store";
 import { Provider } from "react-redux";
@@ -17,7 +18,9 @@ function App({
         <ContactsProvider>
           <SocketProvider username={session?.user?.email}>
             <ConversationsProvider username={session?.user?.email}>
-              <Component {...pageProps} />
+              <Layout>
+                <Component {...pageProps} />
+              </Layout>
             </ConversationsProvider>
           </SocketProvider>
         </ContactsProvider>

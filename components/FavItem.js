@@ -14,7 +14,9 @@ import Typography from '@mui/material/Typography';
 import DeleteIcon from '@mui/icons-material/Delete';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { CardContent, Modal, Rating } from '@mui/material';
-import { green, blue, deepPurple } from '@mui/material/colors';
+import { green, blue, deepPurple, red } from '@mui/material/colors';
+import FavoriteIcon from '@mui/icons-material/Favorite';
+import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import Image from 'next/image';
 
 const style = {
@@ -30,10 +32,17 @@ const style = {
 };
 
 export default function FavItem({ item }) {
+
   const [open, setOpen] = React.useState(false);
+  const [isLiked, setIsLiked] = React.useState(true);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
+
+  const handleLikeClick = () => {
+    // handleFavorites(item);
+    setIsLiked(!isLiked);
+  }
 
   const icon = () => {
     if (item.medium === 'music') {
@@ -81,6 +90,13 @@ export default function FavItem({ item }) {
     }
   }
 
+  let button;
+  if (isLiked) {
+    button = <FavoriteIcon sx={{ color: red[500] }} />;
+  } else {
+    button = <FavoriteBorderOutlinedIcon sx={{ color: red[500] }} />;
+  }
+
   return (
     <>
       <Card sx={{ maxWidth: 345, justifyContent: "center" }} elevation={24} className={mediaStyles.card}>
@@ -113,12 +129,12 @@ export default function FavItem({ item }) {
                   <CardMedia sx={{ display: 'flex', justifyContent: 'center' }}>
                     {itemImage()}
                   </CardMedia>
-                  <CardContent>
+                  {/* <CardContent>
                     <Rating name="read-only" value={5} readOnly />
                     <Typography variant="body2" color="text.secondary">
                       USERS CAPTION/NOTES GO HERE
                     </Typography>
-                  </CardContent>
+                  </CardContent> */}
                 </Card>
               </Modal>
             </>
@@ -131,17 +147,17 @@ export default function FavItem({ item }) {
         </CardMedia>
         <CardContent>
           <Rating name="read-only" value={5} readOnly />
-          <Typography variant="body2" color="text.secondary">
+          {/* <Typography variant="body2" color="text.secondary">
             USERS CAPTION/NOTES GO HERE
-          </Typography>
+          </Typography> */}
         </CardContent>
         <CardActions disableSpacing>
-          <Typography variant="body2" color="text.secondary">
-            Add to favorites
-          </Typography>
-          <IconButton aria-label="delete">
-            Remove from favorites <DeleteIcon />
+          <IconButton aria-label="add to favorites" onClick={handleLikeClick} >
+            {button}
           </IconButton>
+          {/* <IconButton aria-label="delete">
+            Remove from favorites <DeleteIcon />
+          </IconButton> */}
         </CardActions>
       </Card>
     </>

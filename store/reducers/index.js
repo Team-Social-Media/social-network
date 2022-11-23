@@ -1,12 +1,14 @@
 import { combineReducers } from 'redux';
-import Favorites from './favorites';
-import UserData from './userData';
+import USERSlice from './userData';
 import DBSlice from './accessDB';
+import POSTSlice from './posts';
+import COMMENTSlice from './comments';
 
 const rootReducer = combineReducers ({
-   favorites: Favorites,
-   userData: UserData,
-   dbAccess: DBSlice,
+   posts: POSTSlice,
+   userData:USERSlice,
+   dbAccess:DBSlice,
+   comments:COMMENTSlice,
 });
 
 export default rootReducer;

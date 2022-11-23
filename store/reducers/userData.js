@@ -1,16 +1,68 @@
+import { PrismaClient } from '@prisma/client';
 import { createSlice } from '@reduxjs/toolkit';
 
-const userDataSlice = createSlice({
-  name: 'userData',
+const  USERSlice = createSlice({
+  name: 'users',
   initialState: {
     searchData: [],
   },
   reducers: {
-    getUserData: (state, action) => {
-      return state;
+    getAll: table => {
+      return async() =>{
+        try{
+          const prisma = new PrismaClient()
+          const allUsers = await prisma.users.findMany()
+          console.log('allUsers from acessDB slice : ',allUsers);
+        }
+        catch(err){
+          console.log('getAll from accessDB failed!');
+        }
+      }
     },
-    updateAllUserData: (state, action) => {
-      return state;
+    getOne: (userName) => {
+      return async () => {
+        try {
+          const prisma = new PrismaClient()
+          const user = await prisma.users.findFirst({
+            where: { name: userName },
+
+          })
+          console.log('find by name from acessDB slice : ',user);
+        } catch (err) {
+          console.log('find by username(getone) from accessDB failed!');
+        }
+      }
+    },
+    upsertUser: (state, data) => {
+      console.log('upsert user');
+      try{
+        const prisma = new PrismaClient()
+        prisma.users.upsert({
+        where: {
+          email: [data.email],
+        },
+        create: {
+          id: [data.id],
+          name: [data.name],
+          image: [data.image],
+          email: [data.email],
+          email_verified:'',
+          favorites:[...data.favorites],
+          friends:[data.friends],
+          comments:[data.comments],
+          posts:[data.posts],
+          accounts:[data.accounts],
+          sessions:[data.sessions],
+        }
+      })
+    }
+    catch(err){
+      console.log("ERROR in upsert users", err.message);
+    }
+    },
+    favorites: (state = initialState, action) => {
+      // FIXME: this needs to return an object
+      return [...state, ...action.payload]
     },
     getSearchData: (state, action) => {
       return {
@@ -18,8 +70,9 @@ const userDataSlice = createSlice({
         searchData: action.payload,
       };
     },
-  },
-});
+  }
+})
 
-export const { getSearchData } = userDataSlice.actions;
-export default userDataSlice.reducer;
+export const { getAll,getOne,upsertUser, favorites, getSearchData } = USERSlice.actions
+
+export default USERSlice.reducer

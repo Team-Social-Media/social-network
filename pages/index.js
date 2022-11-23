@@ -3,18 +3,18 @@ import styles from '../styles/Home.module.css'
 
 // needed for auth
 import React from 'react';
-import Link from 'next/link';
 import { getSession, signIn, signOut, useSession } from 'next-auth/react';
+
 // needed for structure and css
-import Header from '../components/Header.js'
 import Sidebar from '../components/Sidebar'
 import SidebarRight from '../components/SidebarRight'
 import MediaItem from '../components/MediaItem'
-import Footer from '../components/Footer'
-import { Grid, Pagination, Container } from '@mui/material'
-import { useEffect, useState } from 'react';
+import { Grid, Pagination, Box } from '@mui/material'
 
+import { useEffect, useState } from 'react';
+import { PrismaClient } from '@prisma/client';
 import { useSelector, useDispatch } from 'react-redux';
+import { upsertUser } from '../store/reducers/userData';
 
 
 const Chance = require('chance');
@@ -50,24 +50,27 @@ export default function Home() {
   const { data: session, status } = useSession();
     console.log('profile.js session: ', session)
 
-  // const user = {
-  //   email: session.user.email,
-  //   name: session.user.name,
-  //   favorites: [],
-  // }
+  const user = {
+    email: session.user.email,
+    name: session.user.name,
+    favorites: [],
+    id: '1549812a-8ec1-48ca-ba09-afed7af8e04b',
+  };
 
+  const dispatch = useDispatch();
 
-  const handleFavorites = (favItem) => {
-    if(user.favorites.includes(favItem)) {
-      let i = user.favorites.indexOf(favItem);
-      user.favorites.splice(i, 1);
-    } else {
-      favItem['id']= chance.guid();
-      user.favorites.push(favItem);
-    }
-    console.log('user: ', user)
-    console.log('user favorites: ', user.favorites)
-  }
+  // const handleFavorites = (favItem) => {
+  //   if(user.favorites.includes(favItem)) {
+  //     let i = user.favorites.indexOf(favItem);
+  //     user.favorites.splice(i, 1);
+  //   } else {
+  //     favItem['id']= chance.guid();
+  //     user.favorites.push(favItem);
+  //   }
+  //   console.log('user: ', user)
+  //   console.log('user favorites: ', user.favorites)
+  //   dispatch(upsertUser(user));
+// }
 
   return (
     <>
@@ -77,20 +80,21 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <Header />
-      <Grid className={styles['main-grid']} container spacing={3}>
+      <main>
+      <Grid className={styles['main-grid']} container spacing={2} sx={{}}>
       <Grid item xs={12}>
-          <Container sx={{height: '5vh'}}></Container>
+          <Box sx={{padding: '3vh'}}></Box>
         </Grid>
         <Grid item xs={2}>
           <Sidebar />
         </Grid>
         <Grid item xs={8}>
-          <Grid container spacing={3} sx={{margin: 'auto'}}>
+          <Grid container spacing={3} sx={{margin: 'auto', paddingBottom: "last-child"}}>
             {data.slice(startingData, endingData).map(item => (
-              <Grid key={chance.guid()} item xs={4}>
+              <Grid key={chance.guid()} item xs={3}>
                 <MediaItem item={item}
-                handleFavorites={handleFavorites}/>
+                // handleFavorites={handleFavorites}
+                />
               </Grid>
             ))}
           </Grid>
@@ -100,10 +104,7 @@ export default function Home() {
           <SidebarRight />
         </Grid>
       </Grid>
-    {/* <Testing /> */}
-      <div className={styles.footer}>
-        <Footer />
-      </div>
+      </main>
     </>
 
   )
