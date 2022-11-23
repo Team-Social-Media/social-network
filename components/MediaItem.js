@@ -151,12 +151,12 @@ export default function MediaItem(props) {
           {itemImage(item)}
         </CardMedia>
         <CardActions disableSpacing>
-          <Typography variant="body2" color="text.secondary">
-            Add to favorites
-          </Typography>
           <IconButton aria-label="add to favorites" onClick={handleLikeClick}>
             {button}
           </IconButton>
+          <Typography variant="body2" color="text.secondary">
+            Add to favorites
+          </Typography>
         </CardActions>
       </Card>
     </>
