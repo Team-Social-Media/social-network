@@ -1,5 +1,8 @@
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
+import SearchBar from './SearchBar';
+import { Paper, InputBase, IconButton, Typography } from '@mui/material';
+import SearchIcon from '@mui/icons-material/Search';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import CardMedia from '@mui/material/CardMedia';
@@ -14,9 +17,6 @@ function SidebarRight() {
 
   let MOVIE_API = process.env.NEXT_PUBLIC_MOVIE_API;
   let MOVIE_Key = process.env.NEXT_PUBLIC_MOVIE_Key;
-
-  let url = `${MOVIE_API}InTheaters/${MOVIE_Key}`;
-  console.log('url: ', url)
 
   // async function getData() {
   //   try {
@@ -55,39 +55,24 @@ function SidebarRight() {
 
   return (
     <>
-      <Stack sx={{ height: '88vh', top: '10vh', width: '10%', paddingLeft: '20px', backgroundColor: '#2F3C7E', right: '.05%', position: 'fixed', boxShadow: '5px 5px 5px grey', borderRadius: '15px', textAlign: 'center', paddingRight: '5px' }}>
-        <Box sx={{ flexGrow: 1 }}>
-          {exampleData ?
-            <>
-              <h2>Recommended</h2>
-              <Card>
-                {/* <CardHeader title={exampleData.title} /> */}
-                <CardMedia sx={{ display: 'flex', justifyContent: 'center' }} >
-                  <Image
-                    src={exampleData.image}
-                    alt={exampleData.title}
-                    width={200}
-                    height={240}
-                  />
-                </CardMedia>
-                {/* <CardContent >
-                <p>{exampleData.plot}</p>
-              </CardContent> */}
-              </Card>
-            </>
-            : null
-          }
-          { 
-            <>
-              <h2>Suggested Friends</h2>
-            </>
-          }
+
+      <Stack sx={{ height: '88vh', top: '10vh', paddingLeft: '20px', minWidth: '5vw', backgroundColor: '#2F3C7E', position: 'fixed', boxShadow: '5px 5px 5px grey', borderRadius: '15px 5px 15px 15px', textAlign: 'center' }}>
+        <Box sx={{ flexGrow: 1,  padding: '1px'}}>
+          <h1>Right Sidebar</h1>
+
+          <h2>Whats New in the Media</h2>
+
+          <h2>Suggested Friends</h2>
         </Box>
 
         <Box sx={{ display: 'flex', paddingLeft: 'auto' }}>
           <h5> &copy;Social Media</h5>
         </Box>
       </Stack>
+
+
+
+      
     </>
   )
 }

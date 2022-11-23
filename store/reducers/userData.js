@@ -3,8 +3,12 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const  USERSlice = createSlice({
   name: 'users',
+<<<<<<< HEAD
   initialState: {
   },
+=======
+  initialState: [],
+>>>>>>> 3e917f731f029fd082020dd76c58599a0a1cb275
   reducers: {
     getAll: table => {
       return async() =>{
@@ -24,6 +28,10 @@ const  USERSlice = createSlice({
           const prisma = new PrismaClient()
           const user = await prisma.users.findFirst({
             where: { name: userName },
+<<<<<<< HEAD
+=======
+
+>>>>>>> 3e917f731f029fd082020dd76c58599a0a1cb275
           })
           console.log('find by name from acessDB slice : ',user);
         } catch (err) {
@@ -31,12 +39,22 @@ const  USERSlice = createSlice({
         }
       }
     },
+<<<<<<< HEAD
     upsertUser: (state,data) => {
       console.log('upsert user');
       try{
         prisma.users.upsert({
         where: {
           id: [data.id],
+=======
+    upsertUser: (state, data) => {
+      console.log('upsert user');
+      try{
+        const prisma = new PrismaClient()
+        prisma.users.upsert({
+        where: {
+          email: [data.email],
+>>>>>>> 3e917f731f029fd082020dd76c58599a0a1cb275
         },
         create: {
           id: [data.id],
@@ -44,7 +62,11 @@ const  USERSlice = createSlice({
           image: [data.image],
           email: [data.email],
           email_verified:'',
+<<<<<<< HEAD
           favorites:[data.favorites],
+=======
+          favorites:[...data.favorites],
+>>>>>>> 3e917f731f029fd082020dd76c58599a0a1cb275
           friends:[data.friends],
           comments:[data.comments],
           posts:[data.posts],
@@ -54,13 +76,25 @@ const  USERSlice = createSlice({
       })
     }
     catch(err){
+<<<<<<< HEAD
       console.log("ERROR in upsert user");
     }
+=======
+      console.log("ERROR in upsert users", err.message);
+    }
+    },
+    favorites: (state = initialState, action) => {
+      return [...state, ...action.payload]
+>>>>>>> 3e917f731f029fd082020dd76c58599a0a1cb275
     }
   }
 })
 
+<<<<<<< HEAD
 export const { getAll,getOne,upsertUser } = USERSlice.actions
+=======
+export const { getAll,getOne,upsertUser, favorites } = USERSlice.actions
+>>>>>>> 3e917f731f029fd082020dd76c58599a0a1cb275
 
 export default USERSlice.reducer
 
