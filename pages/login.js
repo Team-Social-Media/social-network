@@ -36,21 +36,24 @@ export default function LandingLogin() {
         direction="column"
         alignItems="center"
         justifyContent="center"
-        style={{ minHeight: '100vh' }}
+        style={{ minHeight: '90vh' }}
       >
 
         <Grid
           item
           xs={3}
         >
+
           <Card className={styles.login}>
-            <div>
+            <Box sx={{margin: '50px', height: '50vh' }}>
               <h1 className={styles.h1}>Welcome to Social Media</h1>
+              <img>
+              </img>
               <h3 className={styles.h3}>Please sign in to get started</h3>
               <div className={styles.button}>
                 <Login />
               </div>
-            </div>
+            </Box>
           </Card>
         </Grid>
 

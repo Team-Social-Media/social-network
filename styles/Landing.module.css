@@ -3,10 +3,13 @@
   align-items: center;
   align-content: center;
   justify-content: center;
+  box-shadow: 5px 5px 5px grey;
+  border-radius: 20px;
 }
 
 .h1 {
   text-align: center;
+  
 }
 
 .h3 {
