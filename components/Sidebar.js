@@ -7,7 +7,6 @@ import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
-
 import MovieIcon from '@mui/icons-material/Movie';
 import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
@@ -74,7 +73,7 @@ function Sidebar({ setData }) {
             </Paper> : null}
           </Box>
           <Typography variant='h5'>
-              <IconButton size="large" sx={{ mr: 2 }} onClick={() => setMedium('songs')}>
+              <IconButton size="large" sx={{ mr: 2 }} onClick={() => setMedium('music')}>
                 <LibraryMusicIcon />
               <Typography sx={{ color: 'whitesmoke' }}>Songs</Typography>
               </IconButton>

@@ -4,6 +4,7 @@ import styles from '../styles/Home.module.css'
 // needed for auth
 import React from 'react';
 import { getSession, signIn, signOut, useSession } from 'next-auth/react';
+
 // needed for structure and css
 import Sidebar from '../components/Sidebar'
 import SidebarRight from '../components/SidebarRight'
@@ -75,7 +76,7 @@ export default function Home() {
       </Head>
 
       <main>
-      <Grid className={styles['main-grid']} container spacing={1} sx={{}}>
+      <Grid className={styles['main-grid']} container spacing={2} sx={{}}>
       <Grid item xs={12}>
           <Box sx={{padding: '3vh'}}></Box>
         </Grid>
