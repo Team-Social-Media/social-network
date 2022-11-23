@@ -1,4 +1,14 @@
+import { Divider, List, ListItem, ListItemText } from '@mui/material';
 import { useContacts } from '../../context/ContactsProvider';
+import ForumIcon from '@mui/icons-material/Forum';
+
+const style = {
+  width: '100%',
+  maxWidth: 360,
+  backgroundColor: 'white',
+  borderRadius: '20px',
+  color: 'black',
+};
 
 function Contacts() {
 
@@ -6,11 +16,14 @@ function Contacts() {
 
   return (
     <>
-    <ul>
-      {contacts.map(contact => (
-        <li key={contact.username}>{contact.topic}</li>
-      ))}
-    </ul>
+      <List sx={style} component="nav" aria-label="mailbox folders">
+        {contacts.map(contact => (
+          <div key={contact.username}>
+            <ListItem key={contact.username}><ForumIcon sx={{ mr: 1 }}/> {contact.topic}
+            </ListItem>
+          </div>
+        ))}
+      </List>
     </>
   );
 }
