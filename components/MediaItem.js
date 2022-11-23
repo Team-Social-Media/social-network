@@ -1,4 +1,5 @@
 import * as React from 'react';
+import axios from 'axios';
 import mediaStyles from '../styles/Item.module.css'
 import { styled } from '@mui/material/styles';
 import Card from '@mui/material/Card';
@@ -17,8 +18,18 @@ import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Modal, Rating } from '@mui/material';
-import { green, blue, deepPurple, red } from '@mui/material/colors';
+
+import { green, blue, deepPurple } from '@mui/material/colors';
+
+import userData, { favorites } from '../store/reducers/userData';
+import { useDispatch, useSelector } from 'react-redux';
+import { useSession } from 'next-auth/react';
+import { PrismaClient } from '@prisma/client';
+
+
 import Image from 'next/image';
+
+const Chance = require('chance');
 
 const style = {
   position: 'absolute',
@@ -34,8 +45,11 @@ const style = {
 
 export default function MediaItem(props) {
 
+  
+  const chance = new Chance();
+
   const item = props.item;
-  const handleFavorites = props.handleFavorites;
+  // const handleFavorites = props.handleFavorites;
 
   console.log('mediaItem.js item: ', item)
 
@@ -45,10 +59,41 @@ export default function MediaItem(props) {
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
-  const handleLikeClick = () => {
+  const { data: session, status } = useSession();
+    console.log('profile.js session: ', session)
+
+  const user = {
+    email: session.user.email,
+    name: session.user.name,
+    favorites: [],
+    // id: '1549812a-8ec1-48ca-ba09-afed7af8e04b',
+  }
+
+  const dispatch = useDispatch();
+  const userData  = useSelector(state => state.userData);
+  console.log('#################', userData);
+
+  const handleFavorites = (favItem) => {
+    if(user.favorites.includes(favItem)) {
+      let i = user.favorites.indexOf(favItem);
+      user.favorites.splice(i, 1);
+    } else { 
+      let newFavItem = {...favItem}
+      newFavItem.id = chance.guid();
+      console.log('!!!!!!!!!!!!!!!!!!!!',newFavItem);
+      user.favorites.push(newFavItem);
+    }
+    console.log('user: ', user)
+    console.log('user favorites: ', user.favorites)
+    dispatch(favorites(user.favorites));
+  }
+
+  const handleLikeClick = async () => {
+
     handleFavorites(item);
     setIsLiked(!isLiked);
   }
+
 
   const icon = (item) => {
     if (item.medium === 'music') {
@@ -157,4 +202,13 @@ export default function MediaItem(props) {
       </Card>
     </>
   );
+}
+
+export async function getServerSideProps() {
+  // Fetch data from external API
+  const res = await fetch(`https://.../data`)
+  const data = await res.json()
+
+  // Pass data to the page via props
+  return { props: { data } }
 }

@@ -10,9 +10,11 @@ import Sidebar from '../components/Sidebar'
 import SidebarRight from '../components/SidebarRight'
 import MediaItem from '../components/MediaItem'
 import { Grid, Pagination, Box } from '@mui/material'
-import { useEffect, useState } from 'react';
 
+import { useEffect, useState } from 'react';
+import { PrismaClient } from '@prisma/client';
 import { useSelector, useDispatch } from 'react-redux';
+import { upsertUser } from '../store/reducers/userData';
 
 
 const Chance = require('chance');
@@ -52,20 +54,23 @@ export default function Home() {
     email: session.user.email,
     name: session.user.name,
     favorites: [],
+    id: '1549812a-8ec1-48ca-ba09-afed7af8e04b',
   }
 
- 
-  const handleFavorites = (favItem) => {
-    if(user.favorites.includes(favItem)) {
-      let i = user.favorites.indexOf(favItem);
-      user.favorites.splice(i, 1);
-    } else {
-      favItem['id']= chance.guid();
-      user.favorites.push(favItem);
-    }
-    console.log('user: ', user)
-    console.log('user favorites: ', user.favorites)
-  }
+  const dispatch = useDispatch();
+  
+  // const handleFavorites = (favItem) => {
+  //   if(user.favorites.includes(favItem)) {
+  //     let i = user.favorites.indexOf(favItem);
+  //     user.favorites.splice(i, 1);
+  //   } else {
+  //     favItem['id']= chance.guid();
+  //     user.favorites.push(favItem);
+  //   }
+  //   console.log('user: ', user)
+  //   console.log('user favorites: ', user.favorites)
+  //   dispatch(upsertUser(user));
+// }
 
   return (
     <>
@@ -88,7 +93,8 @@ export default function Home() {
             {data.slice(startingData, endingData).map(item => (
               <Grid key={chance.guid()} item xs={3}>
                 <MediaItem item={item} 
-                handleFavorites={handleFavorites}/>
+                // handleFavorites={handleFavorites}
+                />
               </Grid>
             ))}
           </Grid>
