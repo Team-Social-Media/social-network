@@ -77,29 +77,32 @@ function SidebarRight() {
             </>
             : null
           }
-          { 
-            <>
-            <Box>
-              <h3>Suggested Friends</h3>
-            </Box>
-            <Box>
-              <Typography>Kris</Typography>
-              <Typography>Hayden</Typography>
-              <Typography>Teresa</Typography>
-              <Typography>KC</Typography>
-              <Typography>Isaiah</Typography>
-            </Box>
-            </>
+          {
+          <Box sx={{ color: '#FBEAEB', backgroundColor: 'rainbow' ,height: '40%', width: 'auto', borderRadius: '10px',  }}>
+          <Box sx={{ padding: '1px', mt: '20px' }}>
+            <h2>Suggested Friends</h2>
+          </Box>
+          <Typography><a href=""> Kris</a></Typography>
+          <Typography><a href=""> Hayden</a></Typography>
+          <Typography><a href=""> KC</a></Typography>
+          <Typography><a href=""> Isaiah</a></Typography>
+          <Typography><a href=""> Jun</a></Typography>
+          <Typography><a href=""> Teresa</a></Typography>
+        </Box>
           }
 
         </Box>
 
-        <Box sx={{ display: 'flex', justifyContent: 'center'}}>
-          <h5>&copy;Social Media</h5>
+        <Box sx={{ display: 'flex', paddingLeft: 'auto' }}>
+          <h5> &copy;Club Hub</h5>
         </Box>
       </Stack>
+
+
+
+
     </>
   )
 }
 
-      export default SidebarRight;
+export default SidebarRight;
