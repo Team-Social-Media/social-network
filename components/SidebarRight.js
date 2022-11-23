@@ -85,13 +85,13 @@ function SidebarRight() {
         </Box>
 
         <Box sx={{ display: 'flex', paddingLeft: 'auto' }}>
-          <h5> &copy;Social Media</h5>
+          <h5> &copy;Club Hub</h5>
         </Box>
       </Stack>
 
 
 
-      
+
     </>
   )
 }
