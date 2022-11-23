@@ -31,7 +31,24 @@ let music = async (req, res) => {
 
   try {
 
-    await axios.get(url)
+    let config = {
+      url: url,
+      method: 'get',
+      headers: {
+        'Content-Type': 'application/x-www-form-urlencoded',
+        Authorization: {
+        'OAuth oauth_consumer_key' : process.env.NEXT_PUBLIC_MUSIC_Key,
+        oauth_nonce : "random_string_or_timestamp",
+        oauth_signature : process.env.NEXT_PUBLIC_MUSIC_Secret,
+        oauth_signature_method : "PLAINTEXT",
+        oauth_timestamp : "current_timestamp",
+        oauth_callback : "your_callback"
+        },
+      'User-Agent': 'SocialApp/1.0.0.0+https://cheerful-paletas-7de42e.netlify.app/',
+      }
+    }
+
+    await axios(config)
       .then(response => {
         console.log('music response.data.results: ', response.data.results)
         const data = response.data.results.slice(0, 10).map(result => ({
