@@ -1,17 +1,16 @@
 .footer {
-  position: static;
   height: 10vh;
   width: 50vw;
-  margin: auto;
-  position: sticky;
+  bottom: 10px;
+  left: 50%;
+  transform: translate(-50%);
+  position: fixed;
   display: flex;
   align-items: center;
-  flex: 1;
   justify-content: center;
-  align-items: center;
-  /* background-color: #2F3C7E; */
+  flex: 1;
   border-Radius: 15px;
-  margin: auto;
+  box-shadow: '5px 5px 5px grey';
 }
 
 .container {

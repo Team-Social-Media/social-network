@@ -1,0 +1,19 @@
+.openconvo {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.openconvo2 {
+  flex-grow: 1;
+  overflow: auto;
+}
+
+.openconvo3 {
+  height: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: end;
+  padding: 3px;
+}

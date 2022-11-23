@@ -3,7 +3,9 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const  USERSlice = createSlice({
   name: 'users',
-  initialState: [],
+  initialState: {
+    searchData: [],
+  },
   reducers: {
     getAll: table => {
       return async() =>{
@@ -59,12 +61,18 @@ const  USERSlice = createSlice({
     }
     },
     favorites: (state = initialState, action) => {
+      // FIXME: this needs to return an object
       return [...state, ...action.payload]
-    }
+    },
+    getSearchData: (state, action) => {
+      return {
+        ...state,
+        searchData: action.payload,
+      };
+    },
   }
 })
 
-export const { getAll,getOne,upsertUser, favorites } = USERSlice.actions
+export const { getAll,getOne,upsertUser, favorites, getSearchData } = USERSlice.actions
 
 export default USERSlice.reducer
-
