@@ -60,7 +60,7 @@ export default function Home() {
         <Grid item xs={8}>
           <Grid container spacing={3} sx={{margin: 'auto', paddingBottom: "last-child"}}>
             {data.slice(startingData, endingData).map(item => (
-              <Grid key={chance.guid()} item xs={3}>
+              <Grid key={chance.guid()} item xs={4}>
                 <MediaItem item={item}/>
               </Grid>
             ))}
