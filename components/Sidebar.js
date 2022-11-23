@@ -32,7 +32,7 @@ function Sidebar({ setData }) {
       <Stack sx={{ height: '88vh', top: '10vh', width: '13vw', left: '.05%', backgroundColor: '#2F3C7E', position: 'fixed', boxShadow: '5px 5px 5px grey', borderRadius: '20px', textAlign: 'center' }}>
 
         <h3>Browse Media</h3>
-        <Box sx={{flexGrow: '1'}}>
+        <Box sx={{ flexGrow: '1' }}>
           <Typography variant='h5'>
             <IconButton size="large" sx={{ mr: 2 }} onClick={() => setMedium('movies')}> <MovieIcon />
               <Typography sx={{ color: '#FBEAEB' }}>&nbsp;&nbsp;&nbsp;Movies</Typography>
@@ -53,7 +53,7 @@ function Sidebar({ setData }) {
             </IconButton>
           </Paper> : null}
 
-          <Box sx={{}}>
+          <Box sx={{ flexGrow: '1' }}>
             <Typography variant='h5'>
               <IconButton size="large" sx={{ mr: 2 }} onClick={() => setMedium('books')}>
                 <LocalLibraryIcon />
@@ -75,6 +75,8 @@ function Sidebar({ setData }) {
               </IconButton>
             </Paper> : null}
           </Box>
+
+          <Box sx={{ flexGrow: '1' }}></Box>
           <Typography variant='h5'>
             <IconButton size="large" sx={{ mr: 2 }} onClick={() => setMedium('music')}>
               <MusicNoteIcon />
@@ -95,13 +97,13 @@ function Sidebar({ setData }) {
               <SearchIcon />
             </IconButton>
           </Paper> : null}
-          <Box sx={{mt: '300px'}}>
-          <Image
-                    src='/derick-anies-hDJT_ERrB-w-unsplash.jpg'
-                    alt='login intro photo'
-                    width={200}
-                    height={240}
-                  />
+          <Box sx={{ display: 'flex', position: 'sticky', padding: '25px', mt: '120%' }}>
+            <Image
+              src='/derick-anies-hDJT_ERrB-w-unsplash.jpg'
+              alt='login intro photo'
+              width={200}
+              height={240}
+            />
           </Box>
         </Box>
       </Stack>
