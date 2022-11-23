@@ -19,7 +19,7 @@ import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlin
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Modal, Rating } from '@mui/material';
 
-import { green, blue, deepPurple } from '@mui/material/colors';
+import { green, blue, deepPurple, red } from '@mui/material/colors';
 
 import userData, { favorites } from '../store/reducers/userData';
 import { useDispatch, useSelector } from 'react-redux';
