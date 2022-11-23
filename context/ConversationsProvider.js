@@ -26,7 +26,6 @@ export function ConversationsProvider({ username, children }) {
       let madeChange = false;
       const newMessage = { sender, text };
       const newConversations = prevConversations.map(conversation => {
-        debugger;
         if(arrayEquality(conversation.recipients, recipients)){
           madeChange = true
           return {...conversation, messages: [...conversation.messages, newMessage]};
@@ -67,6 +66,7 @@ export function ConversationsProvider({ username, children }) {
       const contact = contacts.find(contact => {
         return contact.username === message.sender
       })
+      debugger;
       const name = (contact && contact.name) || message.sender
       const fromMe = username === message.sender
       return { ...message, senderName: name, fromMe }

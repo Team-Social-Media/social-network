@@ -16,7 +16,7 @@ function App({
       <Provider store={store}>
         <ContactsProvider>
           <SocketProvider username={session?.user?.email}>
-            <ConversationsProvider>
+            <ConversationsProvider username={session?.user?.email}>
               <Component {...pageProps} />
             </ConversationsProvider>
           </SocketProvider>
