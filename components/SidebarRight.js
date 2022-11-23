@@ -18,41 +18,6 @@ function SidebarRight() {
   let MOVIE_API = process.env.NEXT_PUBLIC_MOVIE_API;
   let MOVIE_Key = process.env.NEXT_PUBLIC_MOVIE_Key;
 
-
-      <Stack sx={{ height: '88vh', top: '10vh', width: '13vw', paddingLeft: '20px', backgroundColor: '#2F3C7E', right: '.05%', position: 'fixed', boxShadow: '5px 5px 5px grey', borderRadius: '20px', textAlign: 'center', paddingRight: '15px' }}>
-        <Paper
-          component="form"
-          sx={{ borderRadius: '10px', display: 'flex', alignItems: 'center', width: 'auto', mt: '10px' }}
-        >
-          <InputBase
-            sx={{ flex: 1 }}
-            placeholder="Search Website"
-          />
-          <IconButton type="button" sx={{}} aria-label="search" onClick={() => buttonClick('title')}>
-            <SearchIcon />
-          </IconButton>
-        </Paper>
-
-        <Box sx={{ flexGrow: 2, }}>
-          <Box sx={{ backgroundColor: '#FBEAEB', height: '50%', width: 'auto', borderRadius: '10px',  }}>
-            <Box sx={{padding: '1px', mt: '20px' }}>
-              <h2>Whats New in the Media</h2>
-            </Box>
-            <Typography> Kris </Typography>
-          </Box>
-          <Box sx={{ backgroundColor: '#FBEAEB', height: '40%', width: 'auto', borderRadius: '10px',  }}>
-            <Box sx={{ padding: '1px', mt: '20px' }}>
-              <h2>Suggested Friends</h2>
-            </Box>
-            <Typography> Kris </Typography>
-            <Typography> Hayden </Typography>
-            <Typography> KC </Typography>
-            <Typography> Isaiah </Typography>
-            <Typography> Jun </Typography>
-          </Box>
-
-  let url = `${MOVIE_API}InTheaters/${MOVIE_Key}`;
-
   // async function getData() {
   //   try {
   //     return await axios.get(url)
@@ -90,12 +55,15 @@ function SidebarRight() {
 
   return (
     <>
-      <Stack sx={{ height: '88vh', top: '10vh', width: '10%', paddingLeft: '20px', backgroundColor: '#2F3C7E', right: '.05%', position: 'fixed', boxShadow: '5px 5px 5px grey', borderRadius: '15px', textAlign: 'center', paddingRight: '5px' }}>
+      <Stack sx={{ height: '88vh', top: '10vh', width: '12%', padding: '10px', backgroundColor: '#2F3C7E', right: '.05%', position: 'fixed', boxShadow: '5px 5px 5px grey', borderRadius: '15px', textAlign: 'center', paddingRight: '5px' }}>
         <Box sx={{ flexGrow: 1 }}>
           {exampleData ?
             <>
+
               <h3>Recommended</h3>
-              <Card>
+              <Box sx={{}}>
+              <Card sx={{}}>
+
                 {/* <CardHeader title={exampleData.title} /> */}
                 <CardMedia sx={{ display: 'flex', justifyContent: 'center' }} >
                   <Image
@@ -109,21 +77,32 @@ function SidebarRight() {
                 <p>{exampleData.plot}</p>
               </CardContent> */}
               </Card>
+              </Box>
             </>
             : null
           }
           { 
-            <>
-              <h3>Suggested Friends</h3>
-            </>
+          <Box sx={{ color: '#FBEAEB', backgroundColor: 'rainbow' ,height: '40%', width: 'auto', borderRadius: '10px',  }}>
+          <Box sx={{ padding: '1px', mt: '20px' }}>
+            <h2>Suggested Friends</h2>
+          </Box>
+          <Typography><a href=""> Kris</a></Typography>
+          <Typography><a href=""> Hayden</a></Typography>
+          <Typography><a href=""> KC</a></Typography>
+          <Typography><a href=""> Isaiah</a></Typography>
+          <Typography><a href=""> Jun</a></Typography>
+        </Box>
           }
-
         </Box>
 
         <Box sx={{ display: 'flex', paddingLeft: 'auto' }}>
           <h5> &copy;Social Media</h5>
         </Box>
       </Stack>
+
+
+
+      
     </>
   )
 }
