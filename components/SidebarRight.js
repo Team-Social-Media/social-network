@@ -89,12 +89,25 @@ function SidebarRight() {
           <Typography><a href=""> Jun</a></Typography>
           <Typography><a href=""> Teresa</a></Typography>
         </Box>
+          { 
+            <>
+            <Box>
+              <h3>Suggested Friends</h3>
+            </Box>
+            <Box>
+              <Typography>Kris</Typography>
+              <Typography>Hayden</Typography>
+              <Typography>Teresa</Typography>
+              <Typography>KC</Typography>
+              <Typography>Isaiah</Typography>
+            </Box>
+            </>
           }
 
         </Box>
 
         <Box sx={{ display: 'flex', paddingLeft: 'auto' }}>
-          <h5> &copy;Club Hub</h5>
+          <h5> &copy;Social Media</h5>
         </Box>
       </Stack>
 
