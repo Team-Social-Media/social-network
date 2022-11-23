@@ -55,7 +55,7 @@ export default function Home() {
           <Box sx={{padding: '3vh'}}></Box>
         </Grid>
         <Grid item xs={2}>
-          <Sidebar />
+          <Sidebar setData={setData}/>
         </Grid>
         <Grid item xs={8}>
           <Grid container spacing={3} sx={{margin: 'auto', paddingBottom: "last-child"}}>

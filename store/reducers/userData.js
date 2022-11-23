@@ -3,9 +3,10 @@ import { createSlice } from '@reduxjs/toolkit';
 
 const  USERSlice = createSlice({
   name: 'users',
-  initialState: {
-    searchData: [],
-  },
+  initialState:[],
+  // initialState: {
+  //   searchData: [],
+  // },
   reducers: {
     getAll: table => {
       return async() =>{
