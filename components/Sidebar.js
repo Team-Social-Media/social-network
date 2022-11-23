@@ -11,11 +11,12 @@ import InputBase from '@mui/material/InputBase';
 import { useDispatch } from 'react-redux';
 import { getSearchData } from '../store/reducers/userData';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
-import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 import LiveTvIcon from '@mui/icons-material/LiveTv';
 import { green, blue, deepPurple, red, black } from '@mui/material/colors';
 import MovieIcon from '@mui/icons-material/Movie';
 import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
+import MusicNoteIcon from '@mui/icons-material/MusicNote';
+import Image from 'next/image';
 
 function Sidebar({setData}) {
   // const [show, setShow] = useState(false);
@@ -37,10 +38,10 @@ function Sidebar({setData}) {
       <Stack sx={{ height: '88vh', top: '10vh', width: '13vw', left: '.05%', backgroundColor: '#2F3C7E', position: 'fixed', boxShadow: '5px 5px 5px grey', borderRadius: '20px', textAlign: 'center' }}>
 
         <h3>Browse Media</h3>
-        <Box sx={{}}>
+        <Box sx={{ flexGrow: '1' }}>
           <Typography variant='h5'>
             <IconButton size="large" sx={{ mr: 2 }} onClick={() => setMedium('movies')}> <MovieIcon />
-              <Typography sx={{ color: '#FBEAEB' }}>Movies</Typography>
+              <Typography sx={{ color: '#FBEAEB' }}>&nbsp;&nbsp;&nbsp;Movies</Typography>
             </IconButton>
           </Typography>
           {medium === 'movies' ? <Paper
@@ -58,11 +59,11 @@ function Sidebar({setData}) {
             </IconButton>
           </Paper> : null}
 
-          <Box sx={{}}>
+          <Box sx={{ flexGrow: '1' }}>
             <Typography variant='h5'>
               <IconButton size="large" sx={{ mr: 2 }} onClick={() => setMedium('books')}>
                 <LocalLibraryIcon />
-              <Typography sx={{ color: 'whitesmoke' }}>Books</Typography>
+              <Typography sx={{ color: 'whitesmoke' }}>&nbsp;&nbsp;&nbsp;Books</Typography>
               </IconButton>
             </Typography>
             {medium === 'books' ? <Paper
@@ -80,10 +81,12 @@ function Sidebar({setData}) {
               </IconButton>
             </Paper> : null}
           </Box>
+
+          <Box sx={{ flexGrow: '1' }}></Box>
           <Typography variant='h5'>
               <IconButton size="large" sx={{ mr: 2 }} onClick={() => setMedium('music')}>
-                <LibraryMusicIcon />
-              <Typography sx={{ color: 'whitesmoke' }}>Songs</Typography>
+                <MusicNoteIcon />
+              <Typography sx={{ color: 'whitesmoke' }}>&nbsp;&nbsp;&nbsp;Songs</Typography>
               </IconButton>
             </Typography>
           {medium === 'music' ? <Paper
@@ -100,6 +103,14 @@ function Sidebar({setData}) {
               <SearchIcon />
             </IconButton>
           </Paper> : null}
+          <Box sx={{ display: 'flex', position: 'sticky', padding: '25px', mt: '120%' }}>
+            <Image
+              src='/derick-anies-hDJT_ERrB-w-unsplash.jpg'
+              alt='login intro photo'
+              width={200}
+              height={240}
+            />
+          </Box>
         </Box>
       </Stack>
     </>
