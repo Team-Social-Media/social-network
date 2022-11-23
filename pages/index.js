@@ -83,9 +83,9 @@ export default function Home() {
           <Sidebar setData={setData} />
         </Grid>
         <Grid item xs={8}>
-          <Grid container spacing={2} sx={{margin: 'auto', paddingBottom: "last-child"}}>
+          <Grid container spacing={3} sx={{margin: 'auto', paddingBottom: "last-child"}}>
             {data.slice(startingData, endingData).map(item => (
-              <Grid key={chance.guid()} item xs={4}>
+              <Grid key={chance.guid()} item xs={3}>
                 <MediaItem item={item} 
                 handleFavorites={handleFavorites}/>
               </Grid>

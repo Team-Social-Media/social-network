@@ -13,7 +13,13 @@ import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 import LiveTvIcon from '@mui/icons-material/LiveTv';
 import { green, blue, deepPurple, red, black } from '@mui/material/colors';
 
+import MovieIcon from '@mui/icons-material/Movie';
+import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
+import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
+
+
 function Sidebar({ setData }) {
+  // const [show, setShow] = useState(false);
   const [medium, setMedium] = useState(null);
   const [searchQuery, setSearchQuery] = useState({});
   const buttonClick = (queryString) => {
@@ -26,29 +32,38 @@ function Sidebar({ setData }) {
 
   return (
     <>
-      <Stack sx={{ height: '88vh', top: '10vh', width: '10%', left: '.05%',backgroundColor: '#2F3C7E', position: 'fixed', boxShadow: '5px 5px 5px grey', borderRadius: '15px', textAlign: 'center'}}>
-          <h3>Browse Media</h3>
-          <Box sx={{ textAlign: 'center'}}>
+
+      <Stack sx={{ height: '88vh', top: '10vh', width: '13vw', left: '.05%', backgroundColor: '#2F3C7E', position: 'fixed', boxShadow: '5px 5px 5px grey', borderRadius: '20px', textAlign: 'center' }}>
+
+        <h3>Browse Media</h3>
+        <Box sx={{}}>
+          <Typography variant='h5'>
+            <IconButton size="large" sx={{ mr: 2 }} onClick={() => setMedium('movies')}> <MovieIcon />
+              <Typography sx={{ color: '#FBEAEB' }}>Movies</Typography>
+            </IconButton>
+          </Typography>
+          {medium === 'movies' ? <Paper
+            component="form"
+            sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 'auto' }}
+          >
+            <InputBase
+              sx={{ ml: 1, flex: 1 }}
+              placeholder="Movie Title"
+              inputProps={{ 'aria-label': 'enter movie title' }}
+              onChange={(e) => setSearchQuery({ value: e.target.value })}
+            />
+            <IconButton type="button" sx={{ p: '10px' }} aria-label="search" onClick={() => buttonClick('title')}>
+              <SearchIcon />
+            </IconButton>
+          </Paper> : null}
+
+          <Box sx={{}}>
             <Typography variant='h5'>
-              <Button sx={{ backgroundColor: 'black', fontWeight: 'bold' }} variant="contained" size="small" onClick={() => setMedium('movies')}><LiveTvIcon />&nbsp; Movies</Button>
-            </Typography>
-            {medium === 'movies' ? <Paper
-              component="form"
-              sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 'auto' }}
-            >
-              <InputBase
-                sx={{ ml: 1, flex: 1 }}
-                placeholder="Movie Title"
-                inputProps={{ 'aria-label': 'enter movie title' }}
-                onChange={(e) => setSearchQuery({ value: e.target.value })}
-              />
-              <IconButton type="button" sx={{ p: '10px' }} aria-label="search" onClick={() => buttonClick('title')}>
-                <SearchIcon />
+              <IconButton size="large" sx={{ mr: 2 }} onClick={() => setMedium('books')}>
+                <LocalLibraryIcon />
+              <Typography sx={{ color: 'whitesmoke' }}>Books</Typography>
               </IconButton>
-            </Paper> : null}
-            <Typography variant='h5'>
-              <Button sx={{ backgroundColor: 'black', fontWeight: 'bold' }} variant="contained" size="small" onClick={() => setMedium('books')}><MenuBookIcon />&nbsp; Books</Button>
-              </Typography>
+            </Typography>
             {medium === 'books' ? <Paper
               component="form"
               sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 'auto' }}
@@ -63,26 +78,29 @@ function Sidebar({ setData }) {
                 <SearchIcon />
               </IconButton>
             </Paper> : null}
-            <Typography variant='h5'>
-              <Button sx={{ backgroundColor: 'black', fontWeight: 'bold' }} variant="contained" size="small" onClick={() => setMedium('music')}><LibraryMusicIcon />&nbsp; Songs</Button>
-              </Typography>
-            {medium === 'music' ? <Paper
-              component="form"
-              sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 'auto' }}
-            >
-              <InputBase
-                sx={{ ml: 1, flex: 1 }}
-                placeholder="Song Title"
-                inputProps={{ 'aria-label': 'enter song title' }}
-                onChange={(e) => setSearchQuery({ value: e.target.value })}
-              />
-              <IconButton type="button" sx={{ p: '10px' }} aria-label="search" onClick={() => buttonClick('search')}>
-                <SearchIcon />
-              </IconButton>
-            </Paper> : null}
           </Box>
+          <Typography variant='h5'>
+              <IconButton size="large" sx={{ mr: 2 }} onClick={() => setMedium('songs')}>
+                <LibraryMusicIcon />
+              <Typography sx={{ color: 'whitesmoke' }}>Songs</Typography>
+              </IconButton>
+            </Typography>
+          {medium === 'music' ? <Paper
+            component="form"
+            sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 'auto' }}
+          >
+            <InputBase
+              sx={{ ml: 1, flex: 1 }}
+              placeholder="Song Title"
+              inputProps={{ 'aria-label': 'enter song title' }}
+              onChange={(e) => setSearchQuery({ value: e.target.value })}
+            />
+            <IconButton type="button" sx={{ p: '10px' }} aria-label="search" onClick={() => buttonClick('search')}>
+              <SearchIcon />
+            </IconButton>
+          </Paper> : null}
+        </Box>
       </Stack>
-
     </>
   )
 }
