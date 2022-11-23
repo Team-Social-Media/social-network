@@ -11,7 +11,6 @@ import SidebarRight from '../components/SidebarRight'
 import MediaItem from '../components/MediaItem'
 import { Grid, Pagination, Box } from '@mui/material'
 import { useEffect, useState } from 'react';
-
 import { useSelector, useDispatch } from 'react-redux';
 
 
@@ -76,7 +75,7 @@ export default function Home() {
       </Head>
 
       <main>
-      <Grid className={styles['main-grid']} container spacing={2} sx={{}}>
+      <Grid className={styles['main-grid']} container spacing={3} sx={{}}>
       <Grid item xs={12}>
           <Box sx={{padding: '3vh'}}></Box>
         </Grid>
@@ -86,7 +85,7 @@ export default function Home() {
         <Grid item xs={8}>
           <Grid container spacing={3} sx={{margin: 'auto', paddingBottom: "last-child"}}>
             {data.slice(startingData, endingData).map(item => (
-              <Grid key={chance.guid()} item xs={3}>
+              <Grid key={chance.guid()} item xs={4}>
                 <MediaItem item={item} 
                 handleFavorites={handleFavorites}/>
               </Grid>

@@ -2,21 +2,19 @@ import * as React from 'react';
 import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
+import { Card, CardMedia } from '@mui/material/Card';
 import Typography from '@mui/material/Typography';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
-import MenuBookIcon from '@mui/icons-material/MenuBook';
-import LiveTvIcon from '@mui/icons-material/LiveTv';
-import { green, blue, deepPurple, red, black } from '@mui/material/colors';
 import MovieIcon from '@mui/icons-material/Movie';
 import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
+import MusicNoteIcon from '@mui/icons-material/MusicNote';
+import Image from 'next/image';
 
 
 function Sidebar({ setData }) {
-  // const [show, setShow] = useState(false);
   const [medium, setMedium] = useState(null);
   const [searchQuery, setSearchQuery] = useState({});
   const buttonClick = (queryString) => {
@@ -27,16 +25,17 @@ function Sidebar({ setData }) {
       });
   };
 
+
   return (
     <>
 
       <Stack sx={{ height: '88vh', top: '10vh', width: '13vw', left: '.05%', backgroundColor: '#2F3C7E', position: 'fixed', boxShadow: '5px 5px 5px grey', borderRadius: '20px', textAlign: 'center' }}>
 
         <h3>Browse Media</h3>
-        <Box sx={{}}>
+        <Box sx={{flexGrow: '1'}}>
           <Typography variant='h5'>
             <IconButton size="large" sx={{ mr: 2 }} onClick={() => setMedium('movies')}> <MovieIcon />
-              <Typography sx={{ color: '#FBEAEB' }}>Movies</Typography>
+              <Typography sx={{ color: '#FBEAEB' }}>&nbsp;&nbsp;&nbsp;Movies</Typography>
             </IconButton>
           </Typography>
           {medium === 'movies' ? <Paper
@@ -58,7 +57,7 @@ function Sidebar({ setData }) {
             <Typography variant='h5'>
               <IconButton size="large" sx={{ mr: 2 }} onClick={() => setMedium('books')}>
                 <LocalLibraryIcon />
-              <Typography sx={{ color: 'whitesmoke' }}>Books</Typography>
+                <Typography sx={{ color: 'whitesmoke' }}>&nbsp;&nbsp;&nbsp;Books</Typography>
               </IconButton>
             </Typography>
             {medium === 'books' ? <Paper
@@ -77,11 +76,11 @@ function Sidebar({ setData }) {
             </Paper> : null}
           </Box>
           <Typography variant='h5'>
-              <IconButton size="large" sx={{ mr: 2 }} onClick={() => setMedium('music')}>
-                <LibraryMusicIcon />
-              <Typography sx={{ color: 'whitesmoke' }}>Songs</Typography>
-              </IconButton>
-            </Typography>
+            <IconButton size="large" sx={{ mr: 2 }} onClick={() => setMedium('music')}>
+              <MusicNoteIcon />
+              <Typography sx={{ color: 'whitesmoke' }}>&nbsp;&nbsp;&nbsp;Songs</Typography>
+            </IconButton>
+          </Typography>
           {medium === 'music' ? <Paper
             component="form"
             sx={{ p: '2px 4px', display: 'flex', alignItems: 'center', width: 'auto' }}
@@ -96,6 +95,14 @@ function Sidebar({ setData }) {
               <SearchIcon />
             </IconButton>
           </Paper> : null}
+          <Box sx={{mt: '300px'}}>
+          <Image
+                    src='/derick-anies-hDJT_ERrB-w-unsplash.jpg'
+                    alt='login intro photo'
+                    width={200}
+                    height={240}
+                  />
+          </Box>
         </Box>
       </Stack>
     </>

@@ -1,11 +1,8 @@
 import Head from 'next/head';
-import Header from '../components/Header';
 import Sidebar from '../components/Sidebar';
-import styles from '../styles/Home.module.css';
 import { signIn, signOut, useSession, getSession } from 'next-auth/react';
 import SidebarRight from '../components/SidebarRight';
 import FavItem from '../components/FavItem';
-import Footer from '../components/Footer';
 import { Grid, Pagination, Container, Box, Stack } from '@mui/material';
 
 export async function getServerSideProps(context) {
