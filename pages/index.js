@@ -47,11 +47,11 @@ export default function Home() {
   const { data: session, status } = useSession();
     console.log('profile.js session: ', session)
 
-  // const user = {
-  //   email: session.user.email,
-  //   name: session.user.name,
-  //   favorites: [],
-  // }
+  const user = {
+    email: session.user.email,
+    name: session.user.name,
+    favorites: [],
+  }
 
  
   const handleFavorites = (favItem) => {
