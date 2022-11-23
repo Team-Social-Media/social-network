@@ -17,9 +17,11 @@ This app allows users to access their favorite books, movies, and music and shar
 
 * [Team-Social-Media](https://github.com/Team-Social-Media/social-network) (GitHub)
 
-* [back-end server url](http://xyz.com) (when applicable)
+* [Presentation-Deck](https://docs.google.com/presentation/d/1DMqSiNaXUTnMYWKB1mDjpp1aenZ5_5QminoUotTOcQ4/edit?usp=sharing) (GoogleSlides)
 
-* [front-end application](http://xyz.com) (when applicable)
+**Framework Dependency Tools:**
+
+Next.js, Axios, Render.com, Postgres, Next-Auth, Netlify, Prisma, Socket-io, PG Web, Material UI, PGAdmin 4, Redux Toolkit.
 
 ### Setup
 
@@ -35,7 +37,7 @@ NEXT_PUBLIC_BOOKS_API=<http://openlibrary.org/search.json?q=>
 
 #### How to initialize/run your application (where applicable)
 
-- e.g. `npm start`
+- e.g. `npm run dev`
 
 #### How to use your library (where applicable)
 
