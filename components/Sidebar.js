@@ -8,6 +8,8 @@ import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
+import { useDispatch } from 'react-redux';
+import { getSearchData } from '../store/reducers/userData';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
 import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 import LiveTvIcon from '@mui/icons-material/LiveTv';
@@ -15,16 +17,16 @@ import { green, blue, deepPurple, red, black } from '@mui/material/colors';
 import MovieIcon from '@mui/icons-material/Movie';
 import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
 
-
-function Sidebar({ setData }) {
+function Sidebar() {
   // const [show, setShow] = useState(false);
+  const dispatch = useDispatch();
   const [medium, setMedium] = useState(null);
   const [searchQuery, setSearchQuery] = useState({});
   const buttonClick = (queryString) => {
     fetch(`/api/${medium}?${queryString}=${searchQuery.value}`)
       .then((res) => res.json())
       .then((data) => {
-        setData(data);
+        dispatch(getSearchData(data));
       });
   };
 

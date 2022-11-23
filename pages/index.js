@@ -39,7 +39,7 @@ export async function getServerSideProps(context) {
 
 export default function Home() {
   // const { data: session, status } = useSession();
-  const [data, setData] = useState([]);
+  const data = useSelector(state => state.userData.searchData);
   const [page, setPage] = useState(1);
 
   const pageSize = 6;
@@ -55,10 +55,10 @@ export default function Home() {
     name: session.user.name,
     favorites: [],
     id: '1549812a-8ec1-48ca-ba09-afed7af8e04b',
-  }
+  };
 
   const dispatch = useDispatch();
-  
+
   // const handleFavorites = (favItem) => {
   //   if(user.favorites.includes(favItem)) {
   //     let i = user.favorites.indexOf(favItem);
@@ -86,13 +86,13 @@ export default function Home() {
           <Box sx={{padding: '3vh'}}></Box>
         </Grid>
         <Grid item xs={2}>
-          <Sidebar setData={setData} />
+          <Sidebar />
         </Grid>
         <Grid item xs={8}>
           <Grid container spacing={3} sx={{margin: 'auto', paddingBottom: "last-child"}}>
             {data.slice(startingData, endingData).map(item => (
               <Grid key={chance.guid()} item xs={3}>
-                <MediaItem item={item} 
+                <MediaItem item={item}
                 // handleFavorites={handleFavorites}
                 />
               </Grid>

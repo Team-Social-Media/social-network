@@ -45,7 +45,7 @@ const style = {
 
 export default function MediaItem(props) {
 
-  
+
   const chance = new Chance();
 
   const item = props.item;
@@ -77,7 +77,7 @@ export default function MediaItem(props) {
     if(user.favorites.includes(favItem)) {
       let i = user.favorites.indexOf(favItem);
       user.favorites.splice(i, 1);
-    } else { 
+    } else {
       let newFavItem = {...favItem}
       newFavItem.id = chance.guid();
       console.log('!!!!!!!!!!!!!!!!!!!!',newFavItem);
