@@ -8,7 +8,7 @@ function Contacts() {
     <>
     <ul>
       {contacts.map(contact => (
-        <li key={contact.username}>{contact.name}</li>
+        <li key={contact.username}>{contact.topic}</li>
       ))}
     </ul>
     </>

@@ -14,7 +14,7 @@ function Conversations() {
         {conversations.map((conversation, index) => (
           <div key={index}>
             <ListItem button onClick={() => selectConversationIndex(index)} selected={conversation.selected}>
-              <ListItemText primary={conversation.recipients.map(recipient => recipient.name).join(', ')} />
+              <ListItemText primary={conversation.recipients.map(recipient => recipient.topic).join(', ')} />
             </ListItem>
             <Divider />
           </div>

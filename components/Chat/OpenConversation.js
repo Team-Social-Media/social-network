@@ -16,7 +16,7 @@ function OpenConversation() {
     sendMessage(selectedConversation.recipients.map(recipient => recipient.username), text);
     setText('');
   }
-  console.log(selectedConversation.messages)
+
   return (
     <div>
       <div>

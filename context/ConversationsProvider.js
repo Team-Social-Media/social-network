@@ -44,10 +44,15 @@ export function ConversationsProvider({ username, children }) {
   useEffect(() => {
     if (socket == null) return
 
-    socket.on('receive-message', addMessageToConversation)
+    socket.on('receive-message', (...args) => {
+      // if args.recipients isn't in our conversations then ignore...
+      if (conversations.some((conv) => arrayEquality(conv.recipients, args[0].recipients))) {
+        addMessageToConversation(...args);
+      }
+    });
 
     return () => socket.off('receive-message')
-  }, [socket, addMessageToConversation]);
+  }, [socket, addMessageToConversation, conversations]);
 
   function sendMessage(recipients, text){
     addMessageToConversation({ recipients, text, sender: username });
@@ -59,17 +64,16 @@ export function ConversationsProvider({ username, children }) {
       const contact = contacts.find(contact => {
         return contact.username === recipient;
       })
-      const name = (contact && contact.name) || recipient
-      return { username: recipient, name };
+      const topic = (contact && contact.topic) || recipient
+      return { username: recipient, topic };
     });
     const messages = conversation.messages.map(message => {
       const contact = contacts.find(contact => {
         return contact.username === message.sender
       })
-      debugger;
-      const name = (contact && contact.name) || message.sender
+      const topic = (contact && contact.topic) || message.sender
       const fromMe = username === message.sender
-      return { ...message, senderName: name, fromMe }
+      return { ...message, senderName: topic, fromMe }
     })
     const selected = index === selectedConversationIndex;
     return {...conversation, messages, recipients, selected }

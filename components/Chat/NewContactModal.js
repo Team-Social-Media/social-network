@@ -17,13 +17,13 @@ const style = {
 
 function NewContactModal({ closeModal }) {
   const usernameRef = useRef();
-  const nameRef = useRef();
+  const topicRef = useRef();
   const { createContact } = useContacts();
 
   function handleSubmit(e) {
     e.preventDefault()
 
-    createContact(usernameRef.current.value, nameRef.current.value)
+    createContact(topicRef.current.value, topicRef.current.value)
     closeModal()
   }
 
@@ -37,14 +37,12 @@ function NewContactModal({ closeModal }) {
             </IconButton>
           </>
         }
-        title='Create Contact'
+        title='Create Discussion Topic'
       />
       <CardContent>
         <form onSubmit={handleSubmit}>
-          <label>Username/Email:</label>
-          <input type="text" ref={usernameRef} id="username" name="username" required/>
-          <label>Name:</label>
-          <input type="text" ref={nameRef} id="name" name="name" required/>
+          <label>Topic:</label>
+          <input type="text" ref={topicRef} id="topic" name="topic" required/>
           <button type="submit">Create</button>
         </form>
       </CardContent>

@@ -56,7 +56,7 @@ function NewConversationModal({ closeModal }) {
           {contacts.map(contact => (
             <label key={contact.username} >
               <input type="checkbox" key={contact.username} value={selectedContactUsernames.includes(contact.username)} onChange={() => handleCheckboxChange(contact.username)} />
-              {contact.name}
+              {contact.topic}
             </label>
           ))}
           <button type="submit">Create</button>

@@ -61,7 +61,7 @@ function ChatSidebar(props) {
         <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
           <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
             <Tab label="Conversations" {...a11yProps(0)} />
-            <Tab label="Contacts" {...a11yProps(1)} />
+            <Tab label="Subscribe" {...a11yProps(1)} />
           </Tabs>
         </Box>
         <TabPanel value={value} index={0}>
@@ -71,7 +71,7 @@ function ChatSidebar(props) {
           <Contacts />
         </TabPanel>
         <Button variant="contained" onClick={handleOpen}>
-          New {conversationsOpen ? 'Conversation' : 'Contact'}
+          New {conversationsOpen ? 'Conversation' : 'Topic'}
         </Button>
         <Modal open={open}>
           <div>
