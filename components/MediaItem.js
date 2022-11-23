@@ -14,11 +14,11 @@ import LiveTvIcon from '@mui/icons-material/LiveTv';
 import IconButton from '@mui/material/IconButton';
 import CloseIcon from '@mui/icons-material/Close';
 import Typography from '@mui/material/Typography';
-import { red } from '@mui/material/colors';
 import FavoriteIcon from '@mui/icons-material/Favorite';
 import FavoriteBorderOutlinedIcon from '@mui/icons-material/FavoriteBorderOutlined';
 import MoreVertIcon from '@mui/icons-material/MoreVert';
 import { Modal, Rating } from '@mui/material';
+
 import { green, blue, deepPurple } from '@mui/material/colors';
 
 import userData, { favorites } from '../store/reducers/userData';
@@ -26,8 +26,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useSession } from 'next-auth/react';
 import { PrismaClient } from '@prisma/client';
 
+
 import Image from 'next/image';
-import vercelPic from '../public/vercel.svg';
 
 const Chance = require('chance');
 
@@ -92,7 +92,6 @@ export default function MediaItem(props) {
 
     handleFavorites(item);
     setIsLiked(!isLiked);
-
   }
 
 
