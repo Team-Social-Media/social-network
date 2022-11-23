@@ -15,6 +15,8 @@ import LiveTvIcon from '@mui/icons-material/LiveTv';
 import { green, blue, deepPurple, red, black } from '@mui/material/colors';
 import MovieIcon from '@mui/icons-material/Movie';
 import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
+import MusicNoteIcon from '@mui/icons-material/MusicNote';
+import Image from 'next/image';
 
 function Sidebar({setData}) {
   // const [show, setShow] = useState(false);
@@ -39,7 +41,7 @@ function Sidebar({setData}) {
         <Box sx={{ flexGrow: '1' }}>
           <Typography variant='h5'>
             <IconButton size="large" sx={{ mr: 2 }} onClick={() => setMedium('movies')}> <MovieIcon />
-              <Typography sx={{ color: '#FBEAEB' }}>Movies</Typography>
+              <Typography sx={{ color: '#FBEAEB' }}>&nbsp;&nbsp;&nbsp;Movies</Typography>
             </IconButton>
           </Typography>
           {medium === 'movies' ? <Paper
@@ -61,7 +63,7 @@ function Sidebar({setData}) {
             <Typography variant='h5'>
               <IconButton size="large" sx={{ mr: 2 }} onClick={() => setMedium('books')}>
                 <LocalLibraryIcon />
-              <Typography sx={{ color: 'whitesmoke' }}>Books</Typography>
+              <Typography sx={{ color: 'whitesmoke' }}>&nbsp;&nbsp;&nbsp;Books</Typography>
               </IconButton>
             </Typography>
             {medium === 'books' ? <Paper
@@ -83,8 +85,8 @@ function Sidebar({setData}) {
           <Box sx={{ flexGrow: '1' }}></Box>
           <Typography variant='h5'>
               <IconButton size="large" sx={{ mr: 2 }} onClick={() => setMedium('music')}>
-                <LibraryMusicIcon />
-              <Typography sx={{ color: 'whitesmoke' }}>Songs</Typography>
+                <MusicNoteIcon />
+              <Typography sx={{ color: 'whitesmoke' }}>&nbsp;&nbsp;&nbsp;Songs</Typography>
               </IconButton>
             </Typography>
           {medium === 'music' ? <Paper

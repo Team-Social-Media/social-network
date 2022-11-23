@@ -12,6 +12,9 @@ const Nav = () => {
                 <li>
                     <Link href='/profile'>Profile</Link>
                 </li>
+                <li>
+                    <Link href='/chat'>Chat</Link>
+                </li>
             </ul>
         </nav>
         </>
