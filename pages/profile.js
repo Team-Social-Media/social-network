@@ -57,7 +57,6 @@ export default function Profile() {
           </div>
           <Grid item xs={8}>
             <Container sx={{
-              overflow: 'scroll',
               top: '10vh'
             }}>
               <Grid container spacing={3}>

@@ -1,19 +1,25 @@
+import { createSlice } from '@reduxjs/toolkit';
 
-
-export default async function UserData(state = {}, action) {
-  switch(action.type) {
-    case 'GET_USER_DATA':
-
-      return;
-
-    case 'UPDATE_ALL_USER_DATA':  
-
-
-    default:
+const userDataSlice = createSlice({
+  name: 'userData',
+  initialState: {
+    searchData: [],
+  },
+  reducers: {
+    getUserData: (state, action) => {
       return state;
-  }
-}
+    },
+    updateAllUserData: (state, action) => {
+      return state;
+    },
+    getSearchData: (state, action) => {
+      return {
+        ...state,
+        searchData: action.payload,
+      };
+    },
+  },
+});
 
-
-
-
+export const { getSearchData } = userDataSlice.actions;
+export default userDataSlice.reducer;

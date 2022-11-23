@@ -12,7 +12,7 @@ const Login = () => {
         setAnchorEl(null);
         setOpen(false);
     }
-    
+
     const handleClick = (e)=> {
         setAnchorEl(e.currentTarget);
         setOpen(true);
@@ -37,7 +37,7 @@ const Login = () => {
                                 color="inherit"
                                 display='box'
                                 aria-label="menu"
-                                sx={{ mr: 2 }}    
+                                sx={{ mr: 2 }}
                             >
                                 <img alt='avatar' src={session.user.image} height='50' width='50'  />
                                 </IconButton>
@@ -50,7 +50,7 @@ const Login = () => {
                                 Sign Out</MenuItem>
 
                             </Menu>
-                            
+
                         </>
                     )}
 

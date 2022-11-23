@@ -7,15 +7,18 @@ import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
+import { useDispatch } from 'react-redux';
+import { getSearchData } from '../store/reducers/userData';
 
-function Sidebar({ setData }) {
+function Sidebar() {
+  const dispatch = useDispatch();
   const [medium, setMedium] = useState(null);
   const [searchQuery, setSearchQuery] = useState({});
   const buttonClick = (queryString) => {
     fetch(`/api/${medium}?${queryString}=${searchQuery.value}`)
       .then((res) => res.json())
       .then((data) => {
-        setData(data);
+        dispatch(getSearchData(data));
       });
   };
 
