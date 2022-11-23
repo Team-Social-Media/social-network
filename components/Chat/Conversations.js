@@ -4,6 +4,9 @@ import { useConversations } from '../../context/ConversationsProvider';
 const style = {
   width: '100%',
   maxWidth: 360,
+  backgroundColor: 'white',
+  borderRadius: '20px',
+  color: 'black',
 };
 
 function Conversations() {

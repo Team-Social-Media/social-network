@@ -17,3 +17,21 @@
   justify-content: end;
   padding: 3px;
 }
+
+.text-right {
+  text-align: end;
+  padding-left: 15px;
+  padding-right: 15px;
+  border: 1px black;
+}
+
+.text-left {
+  text-align: initial;
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.sender {
+  color: rgb(99, 99, 101);
+  font-weight: 200;
+}

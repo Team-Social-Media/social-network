@@ -5,7 +5,7 @@ import Tab from '@mui/material/Tab';
 import Box from '@mui/material/Box';
 import Conversations from './Conversations';
 import Contacts from './Contacts';
-import { Button, Modal } from '@mui/material';
+import { Button, Modal, Stack } from '@mui/material';
 import NewConversationModal from './NewConversationModal';
 import NewContactModal from './NewContactModal';
 
@@ -55,30 +55,32 @@ function ChatSidebar(props) {
   };
 
   return (
-    <div style={{ width: '300px' }} className="d-flex flex-column">
-      <h3>Username: {props.username}</h3>
-      <Box sx={{ width: '100%' }}>
-        <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-          <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-            <Tab label="Conversations" {...a11yProps(0)} />
-            <Tab label="Subscribe" {...a11yProps(1)} />
-          </Tabs>
+    <div>
+      <Stack sx={{ height: '76vh', top: '11vh', width: '30vw', left: 10, backgroundColor: '#2F3C7E', position: 'fixed', boxShadow: '5px 5px 5px grey', borderRadius: '20px', textAlign: 'center' }}>
+        <h3>Username: {props.username}</h3>
+        <Box sx={{ width: '100%' }}>
+          <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
+            <Tabs value={value} onChange={handleChange} aria-label="basic tabs example" sx={{ color: '#FBEAEB' }}>
+              <Tab sx={{ color: '#FBEAEB' }} label="Conversations" {...a11yProps(0)} />
+              <Tab sx={{ color: '#FBEAEB' }} label="Subscribe" {...a11yProps(1)} />
+            </Tabs>
+          </Box>
+          <TabPanel sx={{ color: '#FBEAEB' }} value={value} index={0}>
+            <Conversations />
+          </TabPanel>
+          <TabPanel sx={{ color: '#FBEAEB' }} value={value} index={1}>
+            <Contacts />
+          </TabPanel>
+          <Button variant="contained" onClick={handleOpen}>
+            New {conversationsOpen ? 'Conversation' : 'Topic'}
+          </Button>
+          <Modal open={open}>
+            <div>
+              {conversationsOpen ? <NewConversationModal closeModal={handleClose} /> : <NewContactModal closeModal={handleClose} />}
+            </div>
+          </Modal>
         </Box>
-        <TabPanel value={value} index={0}>
-          <Conversations />
-        </TabPanel>
-        <TabPanel value={value} index={1}>
-          <Contacts />
-        </TabPanel>
-        <Button variant="contained" onClick={handleOpen}>
-          New {conversationsOpen ? 'Conversation' : 'Topic'}
-        </Button>
-        <Modal open={open}>
-          <div>
-            {conversationsOpen ? <NewConversationModal closeModal={handleClose}/> : <NewContactModal closeModal={handleClose}/>}
-          </div>
-        </Modal>
-      </Box>
+      </Stack>
     </div>
   );
 }
