@@ -14,7 +14,6 @@ import LiveTvIcon from '@mui/icons-material/LiveTv';
 import { green, blue, deepPurple, red, black } from '@mui/material/colors';
 import MovieIcon from '@mui/icons-material/Movie';
 import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
-import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 
 
 function Sidebar({ setData }) {
