@@ -103,14 +103,6 @@ function Sidebar({setData}) {
               <SearchIcon />
             </IconButton>
           </Paper> : null}
-          <Box sx={{ display: 'flex', position: 'sticky', padding: '25px', mt: '120%' }}>
-            <Image
-              src='/derick-anies-hDJT_ERrB-w-unsplash.jpg'
-              alt='login intro photo'
-              width={200}
-              height={240}
-            />
-          </Box>
         </Box>
       </Stack>
     </>
