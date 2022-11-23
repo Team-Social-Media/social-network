@@ -10,52 +10,31 @@ const  DBSlice = createSlice({
       return async() =>{
         try{
           const prisma = new PrismaClient()
-          const allUsers = await prisma[table].findMany()
-          console.log('allUsers from acessDB slice : ',allUsers);
+          const allItems = await prisma[table].findMany()
+          console.log('allUsers from acessDB slice : ',allItems);
         }
         catch(err){
           console.log('getAll from accessDB failed!');
         }
       }
     },
-    getOne: (table,userName) => {
+    getOne: (table,data) => {
       return async () => {
         try {
           const prisma = new PrismaClient()
-          const user = await prisma[table].findFirst({
-            where: { name: userName },
+          const item = await prisma[table].findFirst({
+            where: { name: data.name },
           })
-          console.log('find by name from acessDB slice : ',user);
+          console.log('find by name from acessDB slice : ',item);
         } catch (err) {
           console.log('find by username(getone) from accessDB failed!');
         }
       }
     },
-    upsertUser: (table,data) => {
-      console.log('upsert user');
-      try{
-        prisma[table].upsert({
-        where: {
-          id: [data.id],
-        },
-        create: {
-          id: [data.id],
-          name: [data.name],
-          image: [data.image],
-          email: [data.email],
-          email_verified:'',
-          favorites:[data.favorites],
-        }
-      })
-    }
-    catch(err){
-      console.log("ERROR in upsert user");
-    }
-    }
   }
 })
 
-export const { getAll,getOne,upsert } = DBSlice.actions
+export const { getAll,getOne,} = DBSlice.actions
 
 export default DBSlice.reducer
 

@@ -3,14 +3,11 @@ import styles from '../styles/Home.module.css'
 
 // needed for auth
 import React from 'react';
-import Link from 'next/link';
 import { getSession, signIn, signOut, useSession } from 'next-auth/react';
 // needed for structure and css
-import Header from '../components/Header.js'
 import Sidebar from '../components/Sidebar'
 import SidebarRight from '../components/SidebarRight'
 import MediaItem from '../components/MediaItem'
-import Footer from '../components/Footer'
 import { Grid, Pagination, Box } from '@mui/material'
 import { useEffect, useState } from 'react';
 
@@ -50,11 +47,11 @@ export default function Home() {
   const { data: session, status } = useSession();
     console.log('profile.js session: ', session)
 
-  // const user = {
-  //   email: session.user.email,
-  //   name: session.user.name,
-  //   favorites: [],
-  // }
+  const user = {
+    email: session.user.email,
+    name: session.user.name,
+    favorites: [],
+  }
 
  
   const handleFavorites = (favItem) => {
@@ -78,7 +75,7 @@ export default function Home() {
       </Head>
 
       <main>
-      <Grid className={styles['main-grid']} container spacing={3}>
+      <Grid className={styles['main-grid']} container spacing={1} sx={{}}>
       <Grid item xs={12}>
           <Box sx={{padding: '3vh'}}></Box>
         </Grid>
@@ -86,7 +83,7 @@ export default function Home() {
           <Sidebar setData={setData} />
         </Grid>
         <Grid item xs={8}>
-          <Grid container spacing={3} sx={{margin: 'auto'}}>
+          <Grid container spacing={2} sx={{margin: 'auto', paddingBottom: "last-child"}}>
             {data.slice(startingData, endingData).map(item => (
               <Grid key={chance.guid()} item xs={4}>
                 <MediaItem item={item} 

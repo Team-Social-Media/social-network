@@ -32,7 +32,13 @@ const nextConfig = {
         hostname: 'covers.openlibrary.org',
         port: '',
         pathname: '**'
-      }
+      },
+      {
+        protocol: 'https',
+        hostname: 'picsum.photos',
+        port: '',
+        pathname: '**'
+      },
     ]
   }
 }
