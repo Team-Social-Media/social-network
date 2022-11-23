@@ -7,7 +7,7 @@ import SidebarRight from '../components/SidebarRight';
 import FavItem from '../components/FavItem';
 import Footer from '../components/Footer';
 import { Grid, Pagination, Container, Box, Stack } from '@mui/material';
-
+import { useSelector } from 'react-redux';
 export async function getServerSideProps(context) {
   const session = await getSession(context);
 
@@ -29,6 +29,8 @@ export default function Profile() {
 
   const { data: session, status } = useSession();
   console.log('profile.js session: ', session)
+
+  const favorites  = useSelector(state => state.userData);
 
   const user = { // temp placeholder for data pulled from db
     email: 'session.user.email',
@@ -52,7 +54,7 @@ export default function Profile() {
           </Grid>
           <Grid item xs={8}>
             <Grid container spacing={3} sx={{ margin: 'auto' }}>
-              {user.favorites.map(item => (
+              {favorites.map(item => (
                 <Grid key={item.id} item xs={4}>
                   <FavItem item={item} />
                 </Grid>
