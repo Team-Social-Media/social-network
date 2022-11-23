@@ -11,7 +11,6 @@ import InputBase from '@mui/material/InputBase';
 import { useDispatch } from 'react-redux';
 import { getSearchData } from '../store/reducers/userData';
 import MenuBookIcon from '@mui/icons-material/MenuBook';
-import LibraryMusicIcon from '@mui/icons-material/LibraryMusic';
 import LiveTvIcon from '@mui/icons-material/LiveTv';
 import { green, blue, deepPurple, red, black } from '@mui/material/colors';
 import MovieIcon from '@mui/icons-material/Movie';
