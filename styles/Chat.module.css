@@ -20,18 +20,38 @@
 
 .text-right {
   text-align: end;
-  padding-left: 15px;
+  padding-left: 100px;
   padding-right: 15px;
-  border: 1px black;
+  margin-top: 20px;
+  border: 1px 1px black;
 }
 
 .text-left {
   text-align: initial;
-  padding-left: 15px;
-  padding-right: 15px;
+  padding-left: 10px;
+  padding-right: 100px;
+}
+
+.text-left-color {
+  display: inline-block;
+  background-color: rgb(199, 197, 197);
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 25px;
+  border: 2px solid #030303;
+}
+
+.text-right-color {
+  display: inline-block;
+  background-color: rgb(167, 167, 227);
+  padding: 10px;
+  margin-bottom: 5px;
+  border-radius: 25px;
+  border: 2px solid #040403;
 }
 
 .sender {
   color: rgb(99, 99, 101);
   font-weight: 200;
+  margin-top: 100px;
 }

@@ -38,7 +38,7 @@ function OpenConversation() {
             const lastMessage = selectedConversation.messages.length - 1 === index;
             return (
               <p style={{ width: '100%' }} ref={lastMessage ? setRef : null} key={index} className={`${message.fromMe ? chatStyles['text-right'] : chatStyles['text-left']} my-1 d-flex flex-column ${message.fromMe ? 'align-self-end' : ''}`}>
-                <span className={`${message.fromMe ? chatStyles['text-right'] : chatStyles['text-left']}`}>{message.text}</span>
+                <span className={`${message.fromMe ? chatStyles['text-right-color'] : chatStyles['text-left-color']}`}>{message.text}</span>
                 <br />
                 <span className={chatStyles.sender}>{message.fromMe ? 'You' : message.senderName}</span>
               </p>
