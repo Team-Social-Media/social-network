@@ -55,13 +55,11 @@ function SidebarRight() {
 
   return (
     <>
-      <Stack sx={{ height: '88vh', top: '10vh', width: '10%', paddingLeft: '20px', backgroundColor: '#2F3C7E', right: '.05%', position: 'fixed', boxShadow: '5px 5px 5px grey', borderRadius: '15px', textAlign: 'center', paddingRight: '5px' }}>
-        <Box sx={{ flexGrow: 1 }}>
-          {exampleData ?
+      <Stack sx={{ height: '88vh', top: '10vh', width: '10%', padding: '8px', backgroundColor: '#2F3C7E', right: '.05%', position: 'fixed', boxShadow: '5px 5px 5px grey', borderRadius: '15px', textAlign: 'center', paddingRight: '5px' }}>
+        <Box sx={{ flexGrow: 1 , margin: '5px'}}>
             <>
               <h3>Recommended</h3>
               <Card>
-                {/* <CardHeader title={exampleData.title} /> */}
                 <CardMedia sx={{ display: 'flex', justifyContent: 'center' }} >
                   <Image
                     src={exampleData.image}
@@ -70,14 +68,9 @@ function SidebarRight() {
                     height={240}
                   />
                 </CardMedia>
-                {/* <CardContent >
-                <p>{exampleData.plot}</p>
-              </CardContent> */}
               </Card>
             </>
-            : null
-          }
-          {
+
           <Box sx={{ color: '#FBEAEB', backgroundColor: 'rainbow' ,height: '40%', width: 'auto', borderRadius: '10px',  }}>
           <Box sx={{ padding: '1px', mt: '20px' }}>
             <h2>Suggested Friends</h2>
@@ -89,21 +82,6 @@ function SidebarRight() {
           <Typography><a href=""> Jun</a></Typography>
           <Typography><a href=""> Teresa</a></Typography>
         </Box>
-          { 
-            <>
-            <Box>
-              <h3>Suggested Friends</h3>
-            </Box>
-            <Box>
-              <Typography>Kris</Typography>
-              <Typography>Hayden</Typography>
-              <Typography>Teresa</Typography>
-              <Typography>KC</Typography>
-              <Typography>Isaiah</Typography>
-            </Box>
-            </>
-          }
-
         </Box>
 
         <Box sx={{ display: 'flex', paddingLeft: 'auto' }}>
