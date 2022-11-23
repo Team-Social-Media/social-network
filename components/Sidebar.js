@@ -17,16 +17,17 @@ import { green, blue, deepPurple, red, black } from '@mui/material/colors';
 import MovieIcon from '@mui/icons-material/Movie';
 import LocalLibraryIcon from '@mui/icons-material/LocalLibrary';
 
-function Sidebar() {
+function Sidebar({setData}) {
   // const [show, setShow] = useState(false);
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const [medium, setMedium] = useState(null);
   const [searchQuery, setSearchQuery] = useState({});
   const buttonClick = (queryString) => {
     fetch(`/api/${medium}?${queryString}=${searchQuery.value}`)
       .then((res) => res.json())
       .then((data) => {
-        dispatch(getSearchData(data));
+        setData((data));
+        // dispatchEvent(getSearchData(data));
       });
   };
 
